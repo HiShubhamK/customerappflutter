@@ -8,7 +8,7 @@ import 'package:http/http.dart'as http;
 
 class NetworkApiService extends BaseApiService{
   @override
-  Future getGetApiResponse(String url,Map<String, String> qParams) async {
+  Future getGetApiResponse(String url,Map<String, dynamic> qParams) async {
     dynamic responseJson;
     try{
 
@@ -16,7 +16,7 @@ class NetworkApiService extends BaseApiService{
       //   'param1': 'one',
       //   'param2': 'two',
       // };
-      final response =await http.get(createUri(url, qParams),
+      final response =await http.get(createUri(url, qParams.cast<String, dynamic>()),
         headers: {
           HttpHeaders.authorizationHeader: "Bearer ${Utils.TOKEN}",
           HttpHeaders.contentTypeHeader: "application/json"
@@ -64,7 +64,7 @@ class NetworkApiService extends BaseApiService{
 
     }
   }
-  Uri createUri(String url, [Map<String, String>? queryParameters]) {
+  Uri createUri(String url, [Map<String, dynamic>? queryParameters]) {
     var isHttp = false;
     if (url.startsWith('https://') || (isHttp = url.startsWith('http://'))) {
       var authority = url.substring((isHttp ? 'http://' : 'https://').length);

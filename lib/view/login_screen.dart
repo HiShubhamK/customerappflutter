@@ -25,10 +25,6 @@ class _LoginState extends State<LoginScreen> {
     final authViewModel=Provider.of<AuthViewModel>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Column(
             children: <Widget>[
@@ -55,7 +51,7 @@ class _LoginState extends State<LoginScreen> {
                         errorStyle: TextStyle(fontSize: 18.0),
                         border: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.red),
+                            BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.all(
                                 Radius.circular(9.0)))))),
             Padding(
@@ -63,13 +59,13 @@ class _LoginState extends State<LoginScreen> {
               child: Container(
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      foregroundColor: Colors.green,
+                      backgroundColor: Colors.green,
                       padding: const EdgeInsets.all(16.0),
-                      textStyle: const TextStyle(fontSize: 20),
+                      textStyle: const TextStyle(fontSize: 20,color: Colors.black),
                     ),
                     onPressed: () {
                      Utils.showsnackbar(validateMobile(phonenumbercontroller.text), context);
-                     Map<String,String> data={
+                     Map<String,dynamic> data={
                        'mobileNo':phonenumbercontroller.text.toString(),
                      };
                      authViewModel.sendOTP(data, context);

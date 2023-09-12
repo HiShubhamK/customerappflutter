@@ -6,8 +6,10 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 
 class OTPScreen extends StatelessWidget {
-  const OTPScreen({Key? key}) : super(key: key);
+  var otp='';
+  var verificationCode1='';
 
+  OTPScreen(this.otp);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class OTPScreen extends StatelessWidget {
             ),
             Text("", style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: 40.0),
-            const Text('Enter OTP ', textAlign: TextAlign.center),
+            const Text('Enter OTP', textAlign: TextAlign.center),
             const SizedBox(height: 20.0),
             OtpTextField(
               numberOfFields: 4,
@@ -34,21 +36,27 @@ class OTPScreen extends StatelessWidget {
               },
               //runs when every textfield is filled
               onSubmit: (String verificationCode){
-                showDialog(
-                    context: context,
-                    builder: (context){
-                      return AlertDialog(
-                        title: Text("Verification Code"),
-                        content: Text('Code entered is $verificationCode'),
-                      );
-                    }
-                );
+                verificationCode1=verificationCode.trim();
+                if(verificationCode.toString().trim()==otp.toString().trim()){
+                  Utils.toastMessage('Login successfully!');
+                }else{
+                  Utils.showsnackbar('Please enter valid otp',context);
+
+                }
+
               }, // end onSubmit
             ),
             const SizedBox(height: 20.0),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: const Text('Continue')),
+              child: ElevatedButton(onPressed: () {
+                if(verificationCode1.toString().trim()==otp.toString().trim()){
+                  Utils.toastMessage('Login successfully!');
+                }else{
+                  Utils.showsnackbar('Please enter valid otp',context);
+
+                }
+              }, child: const Text('Submit')),
             ),
           ],
         ),
