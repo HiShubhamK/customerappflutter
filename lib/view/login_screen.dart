@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:customerappdart/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,50 +31,61 @@ class _LoginState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.all(20),
+              margin: EdgeInsets.all(20),
               child: Column(children: [
-            SizedBox(height: 65),
-            Image.asset(splashscreenimg, height: 130, width: 130),
-          ])),
+                SizedBox(height: 65),
+                Image.asset(splashscreenimg, height: 130, width: 130),
+              ])),
           Container(
-            margin: EdgeInsets.fromLTRB(20,0,20,0),
+            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Column(
               children: [
                 SizedBox(height: 10),
-                Text("India's Hygiene Expert", style: const TextStyle(color: Color.fromARGB(255, 43, 183, 122), fontSize: 26)),
+                Text("India's Hygiene Expert",
+                    style: const TextStyle(
+                        color: Color.fromARGB(255, 43, 183, 122),
+                        fontSize: 26)),
               ],
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20,0,20,0),
+            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Column(
               children: [
-                Text("30+ years of legacy", style: const TextStyle(color: Color.fromARGB(255, 43, 183, 122), fontSize: 20)),
+                Text("30+ years of legacy",
+                    style: const TextStyle(
+                        color: Color.fromARGB(255, 43, 183, 122),
+                        fontSize: 20)),
                 SizedBox(height: 20),
               ],
             ),
           ),
           Expanded(
               child: Container(
-            margin: const EdgeInsets.fromLTRB(0,20,0,20),
+            margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             decoration: BoxDecoration(color: Colors.white),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.fromLTRB(20, 0,20, 0),
+                    margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Column(
                       children: [
                         SizedBox(height: 20),
-                        Text("Login", style: const TextStyle(color: Color.fromARGB(255, 43, 183, 122), fontSize: 20)),
+                        Text("Login",
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 43, 183, 122),
+                                fontSize: 20)),
                       ],
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(20, 0,20, 0),
+                    margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Column(
                       children: [
-                        Text("To Say Hi To Hygiene", style: const TextStyle(color: Colors.grey, fontSize: 10)),
+                        Text("To Say Hi To Hygiene",
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 10)),
                         SizedBox(height: 30),
                       ],
                     ),
@@ -86,7 +99,7 @@ class _LoginState extends State<LoginScreen> {
                   Padding(
                       padding: const EdgeInsets.all(0),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(20,0 ,20, 0),
+                        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: TextFormField(
                             controller: phonenumbercontroller,
                             decoration: InputDecoration(
@@ -106,7 +119,7 @@ class _LoginState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.all(0),
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(20,0 ,20, 0),
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                       decoration: BoxDecoration(color: Colors.white),
                       child: TextButton(
                         style: TextButton.styleFrom(
@@ -116,13 +129,15 @@ class _LoginState extends State<LoginScreen> {
                           textStyle: const TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          Utils.showsnackbar(
-                              validateMobile(phonenumbercontroller.text),
-                              context);
-                          Map<String, String> data = {
-                            'mobileNo': phonenumbercontroller.text.toString(),
-                          };
-                          authViewModel.sendOTP(data, context);
+                          if (validateMobile(phonenumbercontroller.text)) {
+                            Map<String, String> data = {
+                              'mobileNo': phonenumbercontroller.text.toString(),
+                            };
+                            authViewModel.sendOTP(data, context);
+                          } else {
+                            Utils.flushbarErrorMessage(
+                                'Please enter valid number!', context);
+                          }
                         },
                         child: const Text('Login'),
                       ),
@@ -138,11 +153,11 @@ class _LoginState extends State<LoginScreen> {
     );
   }
 
-  String validateMobile(String value) {
+  bool validateMobile(String value) {
 // Indian Mobile number are of 10 digit only
     if (value.length != 10)
-      return 'Mobile Number must be of 10 digit';
+      return false;
     else
-      return value;
+      return true;
   }
 }

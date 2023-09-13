@@ -7,7 +7,7 @@ class Utils{
 
 
   static var mobile="";
-  static var TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ijk5Njc5OTQ2ODJAaGljYXJlLmluIiwiTW9iaWxlTm8iOiI5OTY3OTk0NjgyIiwianRpIjoiMzhjZjYzZGItZWI1Zi00YjI4LTg1ZmMtMDFmN2UwYWIyZjM3IiwiZXhwIjoxNjk0NzcxMTI4LCJpc3MiOiJoaWNhcmUubW9iaWxlLmFwaSIsImF1ZCI6ImhpY2FyZS5tb2JpbGUuYXBpIn0.fs-6AREl-BclyYbTFKUxck1nck-r1aOj5l_3e0v8McE";
+  static var TOKEN="";
   static toastMessage(String messsage){
 
 
