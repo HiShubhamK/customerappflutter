@@ -1,6 +1,7 @@
 import 'package:customerappdart/repository/auth_repository.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/utils/utils.dart';
+import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,7 +43,19 @@ class AuthViewModel with ChangeNotifier {
   Future<void> validateAccount(Map<String, dynamic> mobile,BuildContext context) async {
     myRepo.validateAccount(mobile, context).then((value) {
       if(kDebugMode){
-        Utils.showsnackbar(value.toString(), context);
+        // Utils.showsnackbar(value.toString(), context);
+
+        if(value.isSuccess==true){
+          Utils.showsnackbar(value.responseMessage.toString(), context);
+          Utils.TOKEN=value.data!.token.toString();
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => HomeScreen(value.data.toString()),
+          //     ),
+          //     );
+        }
+         // Album.fromJson(jsonDecode(response.body));
 
         print(value.toString());
 

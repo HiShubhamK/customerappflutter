@@ -133,6 +133,7 @@ class _LoginState extends State<LoginScreen> {
                             Map<String, String> data = {
                               'mobileNo': phonenumbercontroller.text.toString(),
                             };
+                            Utils.mobile=phonenumbercontroller.text.toString();
                             authViewModel.sendOTP(data, context);
                           } else {
                             Utils.flushbarErrorMessage(

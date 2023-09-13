@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:customerappdart/data/network/BaseApiService.dart';
 import 'package:customerappdart/data/network/NetworkApiService.dart';
 import 'package:customerappdart/model/otpresponse.dart';
+import 'package:customerappdart/model/validateaccount/validateaccountresponse.dart';
 import 'package:customerappdart/res/app_url.dart';
 import 'package:customerappdart/view/otp_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,12 +37,13 @@ class AuthRepository {
       throw e;
     }
   }
-  Future<dynamic> validateAccount(Map<String, dynamic> mobile,BuildContext context) async {
+  Future<ValidateAccountResponse> validateAccount(Map<String, dynamic> data,BuildContext context) async {
     try {
       dynamic response =
-          await apiService.getGetApiResponse(AppUrl.validateAccount,mobile);
+          await apiService.getGetApiResponse(AppUrl.validateAccount,data);
 
-      return response;
+      final jsonData1 = ValidateAccountResponse.fromJson(response);
+      return jsonData1;
     } catch (e) {
       throw e;
     }

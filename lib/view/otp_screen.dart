@@ -12,6 +12,8 @@ class OTPScreen extends StatelessWidget {
   OTPScreen(this.otp);
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(30),
@@ -38,7 +40,13 @@ class OTPScreen extends StatelessWidget {
               onSubmit: (String verificationCode){
                 verificationCode1=verificationCode.trim();
                 if(verificationCode.toString().trim()==otp.toString().trim()){
-                  Utils.toastMessage('Login successfully!');
+
+                  if(Utils.mobile!="") {
+                    Map<String, dynamic> data = {
+                      'mobileNo': Utils.mobile.toString(),
+                    };
+                    authViewModel.validateAccount(data, context);
+                  }
                 }else{
                   Utils.showsnackbar('Please enter valid otp',context);
 
