@@ -135,7 +135,7 @@ class _LoginState extends State<LoginScreen> {
                             };
                             Utils.mobile =
                                 phonenumbercontroller.text.toString();
-                            authViewModel.sendOTP(data, context);
+                            authViewModel.sendOTP(data, context,phonenumbercontroller.text.toString());
                           } else {
                             Utils.flushbarErrorMessage(
                                 'Please enter valid number!', context);

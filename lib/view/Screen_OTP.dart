@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class ScreenOTP extends StatefulWidget {
-  const ScreenOTP({Key? key, required String this.otp}) : super(key: key);
+  const ScreenOTP({Key? key, required String this.otp, required String this.mobno}) : super(key: key);
   final String otp;
+  final String mobno;
 
   @override
   State<ScreenOTP> createState() {
@@ -16,29 +17,44 @@ class ScreenOTP extends StatefulWidget {
 
 class _ScreenOTP extends State<ScreenOTP> {
   int _seconds = 59;
-  int _minutes = 0;
-  int _hours = 0;
-
-  Timer? _timer;
-
   bool _isRunning = false;
+  Timer? _timer;
   var verificationCode1 = '';
+  var textdata = "";
+
+  int _secondsRemaining = 60;
+  bool _timerActive = false;
+
+
+
+
 
   @override
   void initState() {
     super.initState();
 
+    setState(() {
+      _isRunning=true;
+    });
+
+
     // Start the timer
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (_seconds > 0) {
         setState(() {
+          textdata = "Resend code in 00:$_seconds";
           _isRunning = true;
           _seconds--;
         });
-      } else {
+      } else if (_seconds == 1){
+        textdata = "Resend Code";
         _isRunning = false;
         // Timer has finished, you can perform actions here
         _timer?.cancel(); // Stop the timer
+      }else{
+        textdata = "Resend Code";
+        _isRunning = false;
+        _timer?.cancel();
       }
     });
   }
@@ -87,7 +103,7 @@ class _ScreenOTP extends State<ScreenOTP> {
               children: [
                 Container(
                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    child: Text('+917738753827', textAlign: TextAlign.start)),
+                    child: Text('+91' + Utils.mobile, textAlign: TextAlign.start)),
               ],
             ),
 
@@ -133,16 +149,24 @@ class _ScreenOTP extends State<ScreenOTP> {
               child: Column(
                 children: [
                   TextButton(
-                    onPressed: () {},
-                    child: _isRunning
-                        ? Text(
-                            "Resend code in 00: $_seconds",
-                            style: TextStyle(fontSize: 13, color: Colors.black),
-                          )
-                        : Text(
-                            "Resend code",
-                            style: TextStyle(fontSize: 13, color: Colors.black),
-                          ),
+                    onPressed: () {
+                      if(textdata=="Resend code"){
+
+                      }
+                    },
+                    child: Text(
+                              textdata,
+                              style: TextStyle(fontSize: 13, color: Colors.black),
+                            ),
+                    // child: _isRunning
+                    //     ? Text(
+                    //         "Resend code in 00: $_seconds",
+                    //         style: TextStyle(fontSize: 13, color: Colors.black),
+                    //       )
+                    //     : Text(
+                    //         "Resend code",
+                    //         style: TextStyle(fontSize: 13, color: Colors.black),
+                    //       ),
                   ),
                 ],
               ),

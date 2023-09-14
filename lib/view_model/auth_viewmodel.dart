@@ -13,7 +13,7 @@ import '../view/Screen_OTP.dart';
 class AuthViewModel with ChangeNotifier {
   final myRepo = AuthRepository();
 
-  Future<void> sendOTP(Map<String, dynamic> mobile,BuildContext context) async {
+  Future<void> sendOTP(Map<String, dynamic> mobile,BuildContext context, String mobileno) async {
     myRepo.sendOTP(mobile, context).then((value) {
       if(kDebugMode){
         // Utils.showsnackbar(value.toString(), context);
@@ -26,7 +26,7 @@ class AuthViewModel with ChangeNotifier {
               MaterialPageRoute(
                  // builder: (context) => OTPScreen(value.data.toString()),
 
-                 builder: (context) => ScreenOTP(otp: values),
+                 builder: (context) => ScreenOTP(otp: values,mobno:mobileno),
               ),
               );
         }
