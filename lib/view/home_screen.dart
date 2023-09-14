@@ -93,6 +93,7 @@ class _DashboardScreenState extends State<HomeScreen> {
 
   static Widget _buildCarouselSlider() {
     List<String> imageUrls = [
+
       // Add your image URLs here
       "https://s3.ap-south-1.amazonaws.com/hicare-others/ea4af63e-eca7-4384-87be-4c929284f1cc.jpg",
       "https://s3.ap-south-1.amazonaws.com/hicare-others/a27bf888-bea2-42be-823a-6f9622845d97.jpg",
@@ -102,9 +103,12 @@ class _DashboardScreenState extends State<HomeScreen> {
     return Column(
       children: [
         Container(
+
           height: 200.0,
           margin: EdgeInsets.all(20),
           child: CarouselSlider(
+
+
             options: CarouselOptions(
               height: 200.0,
               autoPlay: true,
