@@ -49,7 +49,6 @@ class OTPScreen extends StatelessWidget {
                   }
                 }else{
                   Utils.showsnackbar('Please enter valid otp',context);
-
                 }
 
               }, // end onSubmit
