@@ -43,37 +43,6 @@ class _ScreenOTP extends State<ScreenOTP> {
     });
   }
 
-  //
-  // void _startTimer() {
-  //
-  //   setState(() {
-  //
-  //     _isRunning = true;
-  //
-  //   });
-  //   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     setState(() {
-  //       if (_seconds > 0) {
-  //         _seconds--;
-  //       } else if (_seconds == 0){
-  //         _isRunning=false;
-  //         _timer?.cancel();
-  //       }else{
-  //         _isRunning=false;
-  //         _timer?.cancel();
-  //       }
-  //     });
-  //   });
-  // }
-  //
-  //
-  // void _pause(){
-  //   setState(() {
-  //     _isRunning=false;
-  //   });
-  //   _timer?.cancel();
-  // }
-
   @override
   Widget build(BuildContext context) {
     // _startTimer();
@@ -165,10 +134,15 @@ class _ScreenOTP extends State<ScreenOTP> {
                 children: [
                   TextButton(
                     onPressed: () {},
-                    child:Text(
-                      "Resend code in 00: $_seconds",
-                      style: TextStyle(fontSize: 13, color: Colors.black),
-                    ),
+                    child: _isRunning
+                        ? Text(
+                            "Resend code in 00: $_seconds",
+                            style: TextStyle(fontSize: 13, color: Colors.black),
+                          )
+                        : Text(
+                            "Resend code",
+                            style: TextStyle(fontSize: 13, color: Colors.black),
+                          ),
                   ),
                 ],
               ),
