@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:customerappdart/data/network/BaseApiService.dart';
 import 'package:customerappdart/data/network/NetworkApiService.dart';
+import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/model/otpresponse.dart';
 import 'package:customerappdart/model/validateaccount/validateaccountresponse.dart';
 import 'package:customerappdart/res/app_url.dart';
@@ -43,6 +44,16 @@ class AuthRepository {
           await apiService.getGetApiResponse(AppUrl.validateAccount,data);
 
       final jsonData1 = ValidateAccountResponse.fromJson(response);
+      return jsonData1;
+    } catch (e) {
+      throw e;
+    }
+  } Future<DashboardModel> GetDashboard(Map<String, dynamic> data,BuildContext context) async {
+    try {
+      dynamic response =
+          await apiService.getPostApiResponse(AppUrl.getdashboard,data);
+
+      final jsonData1 = DashboardModel.fromJson(response);
       return jsonData1;
     } catch (e) {
       throw e;

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:customerappdart/utils/routes/routes.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
+import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
 import 'package:customerappdart/view_model/auth_viewmodel.dart';
@@ -84,7 +85,8 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      // home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

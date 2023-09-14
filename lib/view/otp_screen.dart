@@ -1,4 +1,5 @@
 import 'package:customerappdart/utils/utils.dart';
+import 'package:customerappdart/view/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:customerappdart/view_model/auth_viewmodel.dart';
@@ -38,15 +39,10 @@ class OTPScreen extends StatelessWidget {
               },
               //runs when every textfield is filled
               onSubmit: (String verificationCode){
-                verificationCode1=verificationCode.trim();
                 if(verificationCode.toString().trim()==otp.toString().trim()){
+                  verificationCode1=verificationCode.trim();
 
-                  if(Utils.mobile!="") {
-                    Map<String, dynamic> data = {
-                      'mobileNo': Utils.mobile.toString(),
-                    };
-                    authViewModel.validateAccount(data, context);
-                  }
+
                 }else{
                   Utils.showsnackbar('Please enter valid otp',context);
 
@@ -59,7 +55,15 @@ class OTPScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(onPressed: () {
                 if(verificationCode1.toString().trim()==otp.toString().trim()){
-                  Utils.toastMessage('Login successfully!');
+                  if(Utils.mobile!="") {
+                    Map<String, dynamic> data = {
+                      'mobileNo': Utils.mobile.toString(),
+                    };
+                    Utils.toastMessage('Login successfully!');
+
+                    authViewModel.validateAccount(data, context);
+                    // authViewModel.Dashboard(data, context);
+                  }
                 }else{
                   Utils.showsnackbar('Please enter valid otp',context);
 

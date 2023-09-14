@@ -4,6 +4,7 @@ import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../view/home_screen.dart';
 import '../../view/otp_screen.dart';
 
 class Routes{
@@ -13,7 +14,7 @@ class Routes{
       case RoutesName.home:
         return MaterialPageRoute(builder: (BuildContext context)=> MyHomePage());
      case RoutesName.login:
-        return MaterialPageRoute(builder: (BuildContext context)=> LoginScreen());
+        return MaterialPageRoute(builder: (BuildContext context)=> HomeScreen());
 
 
       default:
