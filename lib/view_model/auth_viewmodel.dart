@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../view/Screen_OTP.dart';
+
 class AuthViewModel with ChangeNotifier {
   final myRepo = AuthRepository();
 
@@ -18,10 +20,13 @@ class AuthViewModel with ChangeNotifier {
 
         if(value.isSuccess==true){
           Utils.showsnackbar(value.responseMessage.toString(), context);
+          var values=value.data.toString();
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => OTPScreen(value.data.toString()),
+                 // builder: (context) => OTPScreen(value.data.toString()),
+
+                 builder: (context) => ScreenOTP(otp: values),
               ),
               );
         }
