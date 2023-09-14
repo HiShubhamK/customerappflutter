@@ -96,12 +96,11 @@ class _LoginState extends State<LoginScreen> {
                   // SizedBox(height: 10),
                   // Text("To Say Hi To Hygiene", style: const TextStyle(color: Colors.grey, fontSize: 10)),
                   // SizedBox(height: 30),
-                  Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: Container(
+                  Container(
                         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: TextFormField(
                             controller: phonenumbercontroller,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 hintText: 'Enter mobile no',
                                 labelText: 'Mobile Number',
@@ -114,7 +113,7 @@ class _LoginState extends State<LoginScreen> {
                                     borderSide: BorderSide(color: Colors.red),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(9.0))))),
-                      )),
+                      ),
                   SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(0),
@@ -147,7 +146,8 @@ class _LoginState extends State<LoginScreen> {
                     ),
                   ),
                 ]),
-          ))
+          )
+          )
         ],
       ),
       // ),
