@@ -10,20 +10,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../view/Screen_OTP.dart';
+
 class AuthViewModel with ChangeNotifier {
   final myRepo = AuthRepository();
 
-  Future<void> sendOTP(Map<String, dynamic> mobile,BuildContext context) async {
+  Future<void> sendOTP(Map<String, dynamic> mobile,BuildContext context, String mobileno) async {
     myRepo.sendOTP(mobile, context).then((value) {
       if(kDebugMode){
         // Utils.showsnackbar(value.toString(), context);
 
         if(value.isSuccess==true){
           Utils.showsnackbar(value.responseMessage.toString(), context);
+          var values=value.data.toString();
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => OTPScreen(value.data.toString()),
+                 // builder: (context) => OTPScreen(value.data.toString()),
+
+                 builder: (context) => ScreenOTP(otp: values,mobno:mobileno),
               ),
               );
         }
