@@ -17,6 +17,13 @@ class _ScreenSupport extends State<ScreenSupport> {
     // Add more items as needed
   ];
 
+  List<IconData> icons = [
+    Icons.shopping_cart, // Replace with the desired icons
+    Icons.feedback,
+    Icons.notification_important,
+    Icons.star,
+    Icons.message];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,9 +115,10 @@ class _ScreenSupport extends State<ScreenSupport> {
                     Icon(Icons.location_on,
                         color: Color.fromARGB(255, 43, 183, 122)),
                     Container(
-                      width: 280,
+                      width: 270,
                       height: 50,
-                      padding: const EdgeInsets.all(10),
+                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      // padding: const EdgeInsets.all(10),
                       child: Text(
                           'HiCare Services PVT LTD.301, 3rd Floor, L.D. Building,Mehra Industrial Estate, L.B.S. Marg,Vikhroli West, Mumbai - 400079.',
                           maxLines: 4,
@@ -144,39 +152,84 @@ class _ScreenSupport extends State<ScreenSupport> {
               ],
             ),
             SizedBox(height: 20),
-            Expanded(child:
-            GridView(
-              shrinkWrap: true,
+            Expanded(
+              child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 5.0,
-                mainAxisSpacing: 5.0, // Spacing between rows
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5.0,
+                    mainAxisSpacing: 5.0,
               ),
-              children: List.generate(5,
-                (index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('images/splash.png'),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(2.0),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            ), //contact
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                // Customize the grid item here
+                return GridItem(item: items[index],icon:icons[index]);
+              },)
+
+            // Expanded(child:
+            // GridView(
+            //   shrinkWrap: true,
+            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 3,
+            //     crossAxisSpacing: 5.0,
+            //     mainAxisSpacing: 5.0, // Spacing between rows
+            //   ),
+            //   children: List.generate(5,
+            //     (index) {
+            //       return Padding(
+            //         padding: const EdgeInsets.all(0.0),
+            //         child: Container(
+            //           decoration: BoxDecoration(
+            //             image: DecorationImage(
+            //               image: AssetImage('images/splash.png'),
+            //               fit: BoxFit.cover,
+            //             ),
+            //             borderRadius: BorderRadius.all(
+            //               Radius.circular(2.0),
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
+            // ),
+            ),  // contact
           ],
         ),
 
       ),
 
+    );
+  }
+}
+
+class GridItem extends StatelessWidget {
+  final String item;
+  final IconData icon;
+
+  GridItem({required this.item, required IconData this.icon,});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(10.0),
+      child: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 15),
+            Center(
+              child: Icon(icon,
+                size: 30.0,
+                color: Color.fromARGB(255, 43, 183, 122)),
+            ),
+            SizedBox(height: 5),
+            Text(
+              item,
+              style: TextStyle(fontSize: 14.0,color: Colors.black),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
