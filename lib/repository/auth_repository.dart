@@ -48,7 +48,8 @@ class AuthRepository {
     } catch (e) {
       throw e;
     }
-  } Future<DashboardModel> GetDashboard(Map<String, dynamic> data,BuildContext context) async {
+  }
+  Future<DashboardModel> GetDashboard(Map<String, dynamic> data,BuildContext context) async {
     try {
       dynamic response =
           await apiService.getPostApiResponse(AppUrl.getdashboard,data);

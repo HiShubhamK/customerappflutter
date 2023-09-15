@@ -86,7 +86,7 @@ class SecondScreen extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: LoginScreen(),
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
