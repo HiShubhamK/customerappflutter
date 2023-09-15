@@ -11,8 +11,6 @@ class Utils{
   static var TOKEN="";
   static toastMessage(String messsage){
 
-
-
     Fluttertoast.showToast(
         msg: messsage,
         toastLength: Toast.LENGTH_SHORT,
@@ -22,7 +20,6 @@ class Utils{
         textColor: Colors.white,
         fontSize: 16.0
     );
-
   }
 
   static void flushbarErrorMessage(String messsage,BuildContext context){
