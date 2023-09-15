@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:customerappdart/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:provider/provider.dart';
+
+import '../view_model/auth_viewmodel.dart';
 
 class ScreenOTP extends StatefulWidget {
   const ScreenOTP({Key? key, required String this.otp, required String this.mobno}) : super(key: key);
@@ -25,10 +28,6 @@ class _ScreenOTP extends State<ScreenOTP> {
   int _secondsRemaining = 60;
   bool _timerActive = false;
 
-
-
-
-
   @override
   void initState() {
     super.initState();
@@ -36,7 +35,6 @@ class _ScreenOTP extends State<ScreenOTP> {
     setState(() {
       _isRunning=true;
     });
-
 
     // Start the timer
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
@@ -62,6 +60,7 @@ class _ScreenOTP extends State<ScreenOTP> {
   @override
   Widget build(BuildContext context) {
     // _startTimer();
+    final authViewModel = Provider.of<AuthViewModel>(context);
 
     return Scaffold(
       body: Container(
@@ -180,9 +179,13 @@ class _ScreenOTP extends State<ScreenOTP> {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
+                      Map<String, dynamic> data = {
+                        'mobileNo': Utils.mobile.toString(),
+                      };
                       if (verificationCode1.toString().trim() ==
                           widget.otp.toString().trim()) {
                         Utils.toastMessage('Login successfully!');
+                        authViewModel.validateAccount(data, context);
                       } else {
                         Utils.showsnackbar('Please enter valid otp', context);
                       }

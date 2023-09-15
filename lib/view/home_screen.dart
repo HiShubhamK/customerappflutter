@@ -1,4 +1,5 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/view/support_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -57,6 +58,14 @@ class _DashboardScreenState extends State<HomeScreen> {
         selectedItemColor: Color.fromARGB(255, 43, 183, 122),
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
+          if(index==2){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ScreenSupport(),
+              ),
+            );
+          }
           setState(() {
             _currentIndex = index;
           });

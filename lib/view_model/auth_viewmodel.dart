@@ -58,7 +58,6 @@ class AuthViewModel with ChangeNotifier {
           ValidateAccountViewModel validateAccountViewModel=new ValidateAccountViewModel();
           validateAccountViewModel.saveToken(value);
 
-
           Navigator.push(
             context,
             MaterialPageRoute(

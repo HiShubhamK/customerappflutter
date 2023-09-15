@@ -211,7 +211,7 @@ class OTPScreen extends StatelessWidget {
                       Map<String, dynamic> data = {
                         'mobileNo': Utils.mobile.toString(),
                       };
-                      authViewModel.sendOTP(data, context);
+                      // authViewModel.sendOTP(data, context);
                     },
                     child: Text(
                       "I didn't receive a code()",
