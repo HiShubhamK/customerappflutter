@@ -64,9 +64,10 @@ class _LoginState extends State<LoginScreen> {
               child: Container(
             margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             decoration: BoxDecoration(color: Colors.white),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
                   Container(
                     margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Column(
@@ -97,23 +98,23 @@ class _LoginState extends State<LoginScreen> {
                   // Text("To Say Hi To Hygiene", style: const TextStyle(color: Colors.grey, fontSize: 10)),
                   // SizedBox(height: 30),
                   Container(
-                        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: TextFormField(
-                            controller: phonenumbercontroller,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: 'Enter mobile no',
-                                labelText: 'Mobile Number',
-                                prefixIcon: Icon(
-                                  Icons.phone,
-                                  //color: Colors.green,
-                                ),
-                                errorStyle: TextStyle(fontSize: 18.0),
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.red),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(9.0))))),
-                      ),
+                    margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: TextFormField(
+                        controller: phonenumbercontroller,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            hintText: 'Enter mobile no',
+                            labelText: 'Mobile Number',
+                            prefixIcon: Icon(
+                              Icons.phone,
+                              //color: Colors.green,
+                            ),
+                            errorStyle: TextStyle(fontSize: 18.0),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.red),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(9.0))))),
+                  ),
                   SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(0),
@@ -132,8 +133,9 @@ class _LoginState extends State<LoginScreen> {
                             Map<String, String> data = {
                               'mobileNo': phonenumbercontroller.text.toString(),
                             };
-                            Utils.mobile=phonenumbercontroller.text.toString();
-                            authViewModel.sendOTP(data, context);
+                            Utils.mobile =
+                                phonenumbercontroller.text.toString();
+                            authViewModel.sendOTP(data, context,phonenumbercontroller.text.toString());
                           } else {
                             Utils.flushbarErrorMessage(
                                 'Please enter valid number!', context);
@@ -145,9 +147,8 @@ class _LoginState extends State<LoginScreen> {
                       height: 50,
                     ),
                   ),
-                ]),
-          )
-          )
+                ])),
+          ))
         ],
       ),
       // ),
