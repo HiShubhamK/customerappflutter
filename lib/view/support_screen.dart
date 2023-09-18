@@ -153,46 +153,46 @@ class _ScreenSupport extends State<ScreenSupport> {
             ),
             SizedBox(height: 20),
             Expanded(
-              child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 5.0,
                     mainAxisSpacing: 5.0,
-              ),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                // Customize the grid item here
-                return GridItem(item: items[index],icon:icons[index]);
-              },)
+                  ),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    // Customize the grid item here
+                    return GridItem(item: items[index],icon:icons[index]);
+                  },)
 
-            // Expanded(child:
-            // GridView(
-            //   shrinkWrap: true,
-            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 3,
-            //     crossAxisSpacing: 5.0,
-            //     mainAxisSpacing: 5.0, // Spacing between rows
-            //   ),
-            //   children: List.generate(5,
-            //     (index) {
-            //       return Padding(
-            //         padding: const EdgeInsets.all(0.0),
-            //         child: Container(
-            //           decoration: BoxDecoration(
-            //             image: DecorationImage(
-            //               image: AssetImage('images/splash.png'),
-            //               fit: BoxFit.cover,
-            //             ),
-            //             borderRadius: BorderRadius.all(
-            //               Radius.circular(2.0),
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
-            // ),
+              // Expanded(child:
+              // GridView(
+              //   shrinkWrap: true,
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 3,
+              //     crossAxisSpacing: 5.0,
+              //     mainAxisSpacing: 5.0, // Spacing between rows
+              //   ),
+              //   children: List.generate(5,
+              //     (index) {
+              //       return Padding(
+              //         padding: const EdgeInsets.all(0.0),
+              //         child: Container(
+              //           decoration: BoxDecoration(
+              //             image: DecorationImage(
+              //               image: AssetImage('images/splash.png'),
+              //               fit: BoxFit.cover,
+              //             ),
+              //             borderRadius: BorderRadius.all(
+              //               Radius.circular(2.0),
+              //             ),
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
+              // ),
             ),  // contact
           ],
         ),
@@ -219,8 +219,8 @@ class GridItem extends StatelessWidget {
             SizedBox(height: 15),
             Center(
               child: Icon(icon,
-                size: 30.0,
-                color: Color.fromARGB(255, 43, 183, 122)),
+                  size: 30.0,
+                  color: Color.fromARGB(255, 43, 183, 122)),
             ),
             SizedBox(height: 5),
             Text(
