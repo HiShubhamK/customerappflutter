@@ -115,6 +115,7 @@ class _LoginState extends State<LoginScreen> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(9.0))))),
                   ),
+
                   SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(0),
