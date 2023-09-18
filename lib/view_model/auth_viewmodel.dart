@@ -58,8 +58,6 @@ class AuthViewModel with ChangeNotifier {
           ValidateAccountViewModel validateAccountViewModel=new ValidateAccountViewModel();
           validateAccountViewModel.saveToken(value);
 
-
-
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -89,9 +87,6 @@ class AuthViewModel with ChangeNotifier {
 
         if(value.isSuccess==true){
           Utils.toastMessage('Dashboard api'+value.responseMessage.toString());
-          Utils.avaiableCategories.addAll(value.data!.menuData as Iterable<MenuData>);
-
-
 
           // Utils.TOKEN=value.data!.token.toString();
           // Navigator.push(

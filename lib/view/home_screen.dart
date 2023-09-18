@@ -1,7 +1,6 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
-import 'package:customerappdart/view/account_screen.dart';
-import 'package:customerappdart/view/myorders.dart';
-// import 'package:customerappdart/view/support_screen.dart';
+import 'package:customerappdart/view/product_screen.dart';
+import 'package:customerappdart/view/support_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -60,18 +59,12 @@ class _DashboardScreenState extends State<HomeScreen> {
         selectedItemColor: Color.fromARGB(255, 43, 183, 122),
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
-          if(index==3){
+          if(index==2){
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AccountScreen(),
-              ),
-            );
-          }else if(index==1){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MyOrders(),
+                builder: (context) => ProductScreen(),
+                // builder: (context) => ScreenSupport(),
               ),
             );
           }
@@ -160,7 +153,7 @@ class _DashboardScreenState extends State<HomeScreen> {
               color: Colors.grey,
             ),
             Container(
-              child: Text('Discover',style: TextStyle(fontSize: 14,color: Colors.grey),),
+              child: Text('Discover Hicare',style: TextStyle(fontSize: 14,color: Colors.grey),),
             ),
             Container(
               width: 60,

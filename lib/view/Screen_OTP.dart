@@ -7,15 +7,13 @@ import 'package:provider/provider.dart';
 import '../view_model/auth_viewmodel.dart';
 
 class ScreenOTP extends StatefulWidget {
-  const ScreenOTP(
-      {Key? key, required String this.otp, required String this.mobno})
-      : super(key: key);
+  const ScreenOTP({Key? key, required String this.otp, required String this.mobno}) : super(key: key);
   final String otp;
   final String mobno;
 
   @override
   State<ScreenOTP> createState() {
-// TODO: implement createState
+    // TODO: implement createState
     return _ScreenOTP();
   }
 }
@@ -35,10 +33,10 @@ class _ScreenOTP extends State<ScreenOTP> {
     super.initState();
 
     setState(() {
-      _isRunning = true;
+      _isRunning=true;
     });
 
-// Start the timer
+    // Start the timer
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (_seconds > 0) {
         setState(() {
@@ -46,12 +44,12 @@ class _ScreenOTP extends State<ScreenOTP> {
           _isRunning = true;
           _seconds--;
         });
-      } else if (_seconds == 1) {
+      } else if (_seconds == 1){
         textdata = "Resend Code";
         _isRunning = false;
-// Timer has finished, you can perform actions here
+        // Timer has finished, you can perform actions here
         _timer?.cancel(); // Stop the timer
-      } else {
+      }else{
         textdata = "Resend Code";
         _isRunning = false;
         _timer?.cancel();
@@ -61,13 +59,13 @@ class _ScreenOTP extends State<ScreenOTP> {
 
   @override
   Widget build(BuildContext context) {
-// _startTimer();
+    // _startTimer();
     final authViewModel = Provider.of<AuthViewModel>(context);
 
     return Scaffold(
       body: Container(
-// margin: EdgeInsets.fromLTRB(20, 65, 20, 0),
-// padding: const EdgeInsets.all(30),
+        // margin: EdgeInsets.fromLTRB(20, 65, 20, 0),
+        // padding: const EdgeInsets.all(30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
@@ -87,8 +85,8 @@ class _ScreenOTP extends State<ScreenOTP> {
                 ],
               ),
             ),
-// Icon(Icons.arrow_back_ios,color: Color.fromARGB(255, 43, 183, 122)),
-// Image.asset(splashscreenimg, height: 30, width: 30),
+            // Icon(Icons.arrow_back_ios,color: Color.fromARGB(255, 43, 183, 122)),
+            // Image.asset(splashscreenimg, height: 30, width: 30),
             SizedBox(height: 20),
 
             Column(
@@ -104,8 +102,7 @@ class _ScreenOTP extends State<ScreenOTP> {
               children: [
                 Container(
                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    child:
-                        Text('+91' + Utils.mobile, textAlign: TextAlign.start)),
+                    child: Text('+91' + Utils.mobile, textAlign: TextAlign.start)),
               ],
             ),
 
@@ -126,9 +123,9 @@ class _ScreenOTP extends State<ScreenOTP> {
                     cursorColor: Color.fromARGB(255, 43, 183, 122),
                     showFieldAsBox: true,
                     onCodeChanged: (String code) {
-//handle validation or checks here
+                      //handle validation or checks here
                     },
-//runs when every textfield is filled
+                    //runs when every textfield is filled
                     onSubmit: (String verificationCode) {
                       verificationCode1 = verificationCode.trim();
                       if (verificationCode.toString().trim() ==
@@ -152,21 +149,23 @@ class _ScreenOTP extends State<ScreenOTP> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      if (textdata == "Resend code") {}
+                      if(textdata=="Resend code"){
+
+                      }
                     },
                     child: Text(
-                      textdata,
-                      style: TextStyle(fontSize: 13, color: Colors.black),
-                    ),
-// child: _isRunning
-//     ? Text(
-//         "Resend code in 00: $_seconds",
-//         style: TextStyle(fontSize: 13, color: Colors.black),
-//       )
-//     : Text(
-//         "Resend code",
-//         style: TextStyle(fontSize: 13, color: Colors.black),
-//       ),
+                              textdata,
+                              style: TextStyle(fontSize: 13, color: Colors.black),
+                            ),
+                    // child: _isRunning
+                    //     ? Text(
+                    //         "Resend code in 00: $_seconds",
+                    //         style: TextStyle(fontSize: 13, color: Colors.black),
+                    //       )
+                    //     : Text(
+                    //         "Resend code",
+                    //         style: TextStyle(fontSize: 13, color: Colors.black),
+                    //       ),
                   ),
                 ],
               ),
