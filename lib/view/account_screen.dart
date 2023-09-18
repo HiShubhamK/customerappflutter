@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
-import '../res/components/categorygridItem.dart';
 import '../view_model/auth_viewmodel.dart';
+
 class AccountScreen extends StatefulWidget {
   @override
   _AccountScreenState createState() => _AccountScreenState();
@@ -22,22 +22,62 @@ class _AccountScreenState extends State<AccountScreen> {
     'Support',
     'Terms and Condition',
   ];
-  final List<String> imagePaths = [
-    'images/myorders.jpg',  // Replace with the actual image paths
-    'images/myorders.jpg',
-    'images/myorders.jpg',
-    'images/myorders.jpg',
-    'images/myorders.jpg',
-    'images/myorders.jpg',
-    'images/myorders.jpg',
+  final List<IconData> icons = [
+    Icons.shopping_cart, // Replace with the desired icons
+    Icons.feedback,
+    Icons.notification_important,
+    Icons.star,
+    Icons.message,
+    Icons.support_agent,
+    Icons.policy,
   ];
+
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        title: Text('My Accounts',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.black),),
+        title: Text(
+          'My Account',
+          style: TextStyle(
+              fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
+        automaticallyImplyLeading: false, // Remove the back arrow
+        backgroundColor: Colors.white,
+      ),
+      drawer: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage('images/avatar.png'),
+            ),
+            SizedBox(width: 16.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Shubham",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "9090909090",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
@@ -50,20 +90,31 @@ class _AccountScreenState extends State<AccountScreen> {
                     ListTile(
                       onTap: () {
                         setState(() {
-                          _selectedIndex = index;
+                          selectedIndex = index;
                         });
                       },
-                      leading: CircleAvatar(
-                        radius: 30.0,
-                        backgroundImage: AssetImage(imagePaths[index]),
+                      leading: Icon(
+                        icons[index], // Use the specified icon
+                        size: 22.0, // Adjust the size as needed
+                        color: Colors.black, // Icon color
                       ),
-                      title: Text(
-                        names[index],
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            names[index],
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios_sharp, // Forward arrow icon
+                            color: Colors.black,
+                            size: 14.0, // Black arrow color
+                          ),
+                        ],
                       ),
                     ),
                     Divider(
@@ -75,19 +126,51 @@ class _AccountScreenState extends State<AccountScreen> {
               },
             ),
           ),
-          if (_selectedIndex != -1)
+          if (selectedIndex != -1)
             Container(
-              color: Colors.white,
+              // color: Colors.green,
               padding: EdgeInsets.all(16.0),
+              // child: Text(
+              //   'Selected Item: ${names[selectedIndex]}',
+              //   style: TextStyle(
+              //     color: Colors.white,
+              //     fontSize: 18.0,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+            ),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            child: GestureDetector(
+              onTap: () {
+                // Handle logout action here
+              },
               child: Text(
                 'Logout',
                 style: TextStyle(
                   color: Colors.green,
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
+          ),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            child: GestureDetector(
+              onTap: () {
+                // Handle logout action here
+              },
+              child: Text(
+                'version 1.0',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

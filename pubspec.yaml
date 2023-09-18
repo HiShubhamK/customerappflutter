@@ -45,6 +45,10 @@ dependencies:
   flutter_otp_text_field: ^1.1.0+2
   json_annotation: ^4.7.0
   shared_preferences:
+  flutter_native_splash: ^1.2.1  # For generating splash screens
+  flare_flutter: ^3.0.2  #Animation
+  animated_splash_screen: ^1.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -67,8 +71,6 @@ flutter:
   uses-material-design: true
   assets:
     - images/splash.png
-    - images/ic_home.xml
     - images/orders.png
     - images/ic_products.png
-    - images/ic_user.xml
-    - images/myorders.png
+    - images/avatar.png

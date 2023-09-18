@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:customerappdart/utils/routes/routes.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
+import 'package:customerappdart/view/splash_screen.dart';
 import 'package:customerappdart/view_model/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: MyHomePage(),
 
-      initialRoute: RoutesName.login,
+      initialRoute: RoutesName.splash,
       onGenerateRoute: Routes.generateRoute,
     ),);
   }
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
+    Timer(Duration(seconds: 0),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 (context) =>
@@ -86,7 +88,15 @@ class SecondScreen extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: LoginScreen(),
-      home: LoginScreen(),
-    );
+      home: AnimatedSplashScreen(
+          duration: 3000,
+          splash: AssetImage(
+           'images/splash.png'
+          ),
+          nextScreen: LoginScreen(),
+
+          splashTransition: SplashTransition.fadeTransition,
+          backgroundColor: Colors.white));
+
   }
 }
