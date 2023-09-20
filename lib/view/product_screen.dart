@@ -61,12 +61,15 @@ class _ProductScreen extends State<ProductScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(30, 14, 10, 14),
+              margin: EdgeInsets.fromLTRB(20, 14, 10, 14),
               child: Center(
                 child: Badge(
                   label: Text('5',
                       style: TextStyle(color: Colors.white, fontSize: 15)),
                   backgroundColor: Colors.red,
+
+                  // child: IconButton(icon: Icon(Icons.shopping_cart,size: 30,color: Color.fromARGB(255, 43, 183, 122)), onPressed: () {  }, ),
+
                   child: Icon(Icons.shopping_cart,
                       size: 30,
                       color: Color.fromARGB(255, 43, 183, 122)),
