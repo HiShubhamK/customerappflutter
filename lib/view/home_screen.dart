@@ -1,8 +1,11 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/support_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+import 'account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -64,6 +67,23 @@ class _DashboardScreenState extends State<HomeScreen> {
               context,
               MaterialPageRoute(
                 builder: (context) => ProductScreen(),
+                // builder: (context) => ScreenSupport(),
+              ),
+            );
+          }
+          if(index==1){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyOrders(),
+                // builder: (context) => ScreenSupport(),
+              ),
+            );
+          } if(index==3){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AccountScreen(),
                 // builder: (context) => ScreenSupport(),
               ),
             );
