@@ -45,6 +45,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.0+2
   json_annotation: ^4.7.0
   flutter_rating_bar: ^4.0.1
+  badges: ^2.0.2
 
   shared_preferences:
   flutter_native_splash: ^1.2.1  # For generating splash screens

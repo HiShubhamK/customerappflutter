@@ -24,50 +24,145 @@ class _ProductScreen extends State<ProductScreen> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 65.0,
           backgroundColor: Colors.white,
-          title: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Color.fromARGB(255, 43, 183, 122)),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14.0),
+
+          actions: [
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 14, 5, 14),
+              width: 220, // Adjust the width as needed
+              child: TextField(
+                keyboardType: TextInputType.number,
+                textAlignVertical: TextAlignVertical.center,
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+                // controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 43, 183, 122),
+                    )
                   ),
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      hintText: 'Pincode...',
-                      border: InputBorder.none,
-                      // icon: Icon(Icons.search),
-                    ),
-                    onSubmitted: (value) {
-                      // Implement search functionality here
-                      print('Search query: $value');
-                    },
-                  ),
+                  contentPadding: EdgeInsets.fromLTRB(16.0,0,0,0),
                 ),
               ),
-              SizedBox(width: 3),
-              IconButton(
-                icon: Icon(Icons.search,
-                    color: Color.fromARGB(255, 43, 183, 122)),
+            ),
+            Card(
+              margin: EdgeInsets.fromLTRB(0, 14, 0, 14),
+              color: Color.fromARGB(255, 43, 183, 122),
+              child: IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
                 // Add your cart icon here
                 onPressed: () {
                   // Implement cart functionality
                 },
               ),
-              SizedBox(width: 3),
-              IconButton(
-                icon: Icon(Icons.shopping_cart,
-                    color: Color.fromARGB(255, 43, 183, 122)),
-                onPressed: () {},
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30, 14, 10, 14),
+              child: Center(
+                child: Badge(
+                  label: Text('5',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                  backgroundColor: Colors.red,
+                  child: Icon(Icons.shopping_cart,
+                      size: 30,
+                      color: Color.fromARGB(255, 43, 183, 122)),
+                ),
               ),
-            ],
-          ),
+            ),
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: Icon(Icons.call,color: Colors.black,),
+            // ),
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: Icon(Icons.more_vert,color:Colors.black),
+            // ),
+          ],
+
+          // title: Row(
+          //   children: [
+          //     Expanded(
+          //       child: Container(
+          //         padding: EdgeInsets.symmetric(horizontal: 8.0),
+          //         decoration: BoxDecoration(
+          //           border: Border.all(color: Color.fromARGB(255, 43, 183, 122)),
+          //           color: Colors.white,
+          //           borderRadius: BorderRadius.circular(14.0),
+          //         ),
+          //         child: Container(
+          //           child: TextField(
+          //             keyboardType: TextInputType.number,
+          //             style: TextStyle(color: Colors.black),
+          //             decoration: InputDecoration(
+          //               hintText: 'Pincode...',
+          //               border: InputBorder.none,
+          //               // icon: Icon(Icons.search),
+          //             ),
+          //             onSubmitted: (value) {
+          //               // Implement search functionality here
+          //               print('Search query: $value');
+          //             },
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(width: 3),
+          //     Card(
+          //       color: Color.fromARGB(255, 43, 183, 122),
+          //       child: IconButton(
+          //         icon: Icon(Icons.search, color: Colors.white),
+          //         // Add your cart icon here
+          //         onPressed: () {
+          //           // Implement cart functionality
+          //         },
+          //       ),
+          //     ),
+          //     SizedBox(width: 3),
+          //
+          //
+          //     Badge(
+          //       label: Text('5', style: TextStyle(color: Colors.white, fontSize: 15)),
+          //       backgroundColor: Colors.red,
+          //       child: Icon(Icons.shopping_cart, size: 50,color: Color.fromARGB(255, 43, 183, 122)),
+          //     ),
+          //
+          //
+          //     // Badge(
+          //     //   padding: EdgeInsets.all(4),
+          //     //   backgroundColor: Colors.blue,
+          //     //   alignment: AlignmentDirectional.topStart,
+          //     //   largeSize: 24,
+          //     //   textStyle: TextStyle(fontSize: 14),
+          //     //   textColor: Colors.yellow,
+          //     //   label: Text("32"),
+          //     //   child: Icon(Icons.mail, size: 50,color: Colors.black,),
+          //     //   isLabelVisible: true,
+          //     // ),
+          //
+          //
+          //     // Badge(
+          //     //   child: IconButton(
+          //     //     icon: Icon(Icons.notifications),
+          //     //     onPressed: () {
+          //     //       // Handle badge icon tap
+          //     //     },
+          //     //   ),
+          //     //    // Set the badge value
+          //     // ),
+          //
+          //
+          //
+          //     // IconButton(
+          //     //   icon: Icon(Icons.shopping_cart,
+          //     //       color: Color.fromARGB(255, 43, 183, 122)),
+          //     //   onPressed: () {},
+          //     // ),
+          //   ],
+          // ),
           automaticallyImplyLeading: false,
         ),
         body: Column(
@@ -91,6 +186,7 @@ class _ProductScreen extends State<ProductScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(' Save 500 ',
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
                                           backgroundColor: Colors.red)),
@@ -125,10 +221,13 @@ class _ProductScreen extends State<ProductScreen> {
                                   ),
                                   SizedBox(height: 3),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 5, 0,0),
+                                    margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                                     child: Row(
                                       children: [
-                                        Text('4.8',style: TextStyle(color: Colors.black,fontSize: 12)),
+                                        Text('4.8',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12)),
                                         SizedBox(width: 3),
                                         RatingBar.builder(
                                           wrapAlignment: WrapAlignment.start,
@@ -142,7 +241,6 @@ class _ProductScreen extends State<ProductScreen> {
                                           // itemPadding: EdgeInsets.symmetric(
                                           //     horizontal: 4.0),
                                           itemBuilder: (context, _) => Center(
-
                                             child: Icon(
                                               Icons.star,
                                               color: Colors.amber,
@@ -166,8 +264,8 @@ class _ProductScreen extends State<ProductScreen> {
                                               fontSize: 13)),
                                       Text('500',
                                           style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 18,
+                                            color: Colors.black,
+                                            fontSize: 18,
                                           )),
                                       SizedBox(width: 10),
                                       Text('\u{20B9}',
@@ -175,7 +273,7 @@ class _ProductScreen extends State<ProductScreen> {
                                               color: Colors.grey,
                                               fontSize: 14,
                                               decoration:
-                                              TextDecoration.lineThrough)),
+                                                  TextDecoration.lineThrough)),
                                       Text('500',
                                           style: TextStyle(
                                               color: Colors.grey,
