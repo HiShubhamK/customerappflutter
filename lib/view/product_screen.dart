@@ -186,7 +186,6 @@ class _ProductScreen extends State<ProductScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(' Save 500 ',
-                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
                                           backgroundColor: Colors.red)),
