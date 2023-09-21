@@ -1,4 +1,5 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/view/address_screen.dart';
 import 'package:customerappdart/view/cart_screen.dart';
 import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/support_screen.dart';
@@ -64,7 +65,7 @@ class _DashboardScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CartScreen(),
+                builder: (context) => AddressScreen(),
                 // builder: (context) => ScreenSupport(),
               ),
             );
