@@ -40,14 +40,33 @@ class _CartScreen extends State<CartScreen> {
         iconTheme: IconThemeData(color: Color.fromARGB(255, 43, 183, 122)),
       ),
       body: Container(
-        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           children: [
-            Center(
-                child: Text('Deliver to Pinode 400080',
-                    style: TextStyle(
-                        backgroundColor: Color.fromARGB(255, 43, 183, 55),
-                        color: Colors.white))),
+            Container(
+              height: 30,
+              color: Color.fromARGB(255, 43, 183, 122), // Set the text color
+              width: double.infinity, // Make the Container match the parent's width
+              child: Center(
+                child: Text(
+                  'Deliver to pincode 400078',
+                  style: TextStyle(
+                    color: Colors.white // Set the text color
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            // Container(
+            //       child: Wrap(
+            //         children: [
+            //           Text('Deliver to Pinode 400080',
+            //               style: TextStyle(
+            //                   backgroundColor: Color.fromARGB(255, 43, 183, 55),
+            //                   color: Colors.white)),
+            //         ],
+            //       ),
+            // ),
             Card(
               elevation: 5,
               child: Container(
@@ -109,20 +128,13 @@ class _CartScreen extends State<CartScreen> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(' Save 500 ',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          backgroundColor: Colors.red)),
-                                ),
                                 SizedBox(height: 5),
                                 Container(
                                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                     child: Image.asset(
                                       'images/splash.png',
-                                      height: 150,
-                                      width: 130,
+                                      height: 140,
+                                      width: 120,
                                     )),
                               ],
                             ),
@@ -179,7 +191,18 @@ class _CartScreen extends State<CartScreen> {
                                       ],
                                     ),
                                   ),
-                                  // Text('Rating',style: TextStyle(color: Colors.black,fontSize: 14)),
+                                  SizedBox(height: 3),
+                                  Container(
+                                      width: 75,
+                                      color: Colors.red,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Text('Save 500',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                backgroundColor: Colors.red,
+                                                fontSize: 14)),
+                                      )),
                                   SizedBox(height: 3),
                                   Row(
                                     children: [
@@ -223,117 +246,140 @@ class _CartScreen extends State<CartScreen> {
                                     ],
                                   ),
                                   Container(
+                                    height: 50,
                                     child: Card(
-                                        semanticContainer: true,
-                                        clipBehavior:
-                                            Clip.antiAliasWithSaveLayer,
+                                      semanticContainer: true,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+
                                       child: Row(
-                                        children: <Widget>[
-                                          IconButton(
-                                            icon: Icon(Icons.home),
-                                            onPressed: () {
-                                              // Add your button logic here
-                                            },
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.all(0.0),
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  245, 245, 245, 245),
+                                              shape: BoxShape
+                                                  .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                            ),
+                                            child: IconButton(
+                                              icon: Icon(Icons.remove),
+                                              onPressed: () {},
+                                            ),
                                           ),
-                                          IconButton(
-                                            icon: Icon(Icons.settings),
-                                            onPressed: () {
-                                              // Add your button logic here
-                                            },
+                                          Container(
+                                              margin: EdgeInsets.all(10),
+                                              child: Text('1')),
+                                          Container(
+                                            margin: EdgeInsets.all(0.0),
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  245, 245, 245, 245),
+                                              shape: BoxShape
+                                                  .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                            ),
+                                            child: IconButton(
+                                              icon: Icon(Icons.add),
+                                              onPressed: () {},
+                                            ),
                                           ),
-                                          IconButton(
-                                            icon: Icon(Icons.mail),
-                                            onPressed: () {
-                                              // Add your button logic here
-                                            },
+                                          SizedBox(
+                                            width: 2,
                                           ),
-                                          IconButton(
-                                            icon: Icon(Icons.person),
-                                            onPressed: () {
-                                              // Add your button logic here
-                                            },
+                                          Container(
+                                            margin: EdgeInsets.all(0.0),
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  245, 245, 245, 245),
+                                              shape: BoxShape
+                                                  .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                            ),
+                                            child: IconButton(
+                                              icon: Icon(Icons.delete),
+                                              onPressed: () {},
+                                            ),
                                           ),
                                         ],
                                       ),
 
-                                        // child: SingleChildScrollView(
-                                        //   child: Row(
-                                        //     children: [
-                                        //       Container(
-                                        //         decoration: BoxDecoration(
-                                        //           color: Color.fromARGB(
-                                        //               245, 245, 245, 245),
-                                        //           // Set the background color of the container
-                                        //           shape: BoxShape
-                                        //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
-                                        //         ),
-                                        //         margin: EdgeInsets.all(2),
-                                        //         child: IconButton(
-                                        //             onPressed: () {},
-                                        //             icon: Icon(
-                                        //               Icons.add,
-                                        //               size: 20,
-                                        //               color: Color.fromARGB(
-                                        //                   255, 43, 183, 122),
-                                        //             )),
-                                        //       ),
-                                        //       Container(
-                                        //         decoration: BoxDecoration(
-                                        //           color: Color.fromARGB(
-                                        //               245, 245, 245, 245),
-                                        //           // Set the background color of the container
-                                        //           shape: BoxShape
-                                        //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
-                                        //         ),
-                                        //         margin: EdgeInsets.all(2),
-                                        //         child: IconButton(
-                                        //             onPressed: () {},
-                                        //             icon: Icon(
-                                        //               Icons.add,
-                                        //               size: 20,
-                                        //               color: Color.fromARGB(
-                                        //                   255, 43, 183, 122),
-                                        //             )),
-                                        //       ),
-                                        //       Container(
-                                        //         decoration: BoxDecoration(
-                                        //           color: Color.fromARGB(
-                                        //               245, 245, 245, 245),
-                                        //           // Set the background color of the container
-                                        //           shape: BoxShape
-                                        //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
-                                        //         ),
-                                        //         margin: EdgeInsets.all(2),
-                                        //         child: IconButton(
-                                        //             onPressed: () {},
-                                        //             icon: Icon(
-                                        //               Icons.add,
-                                        //               size: 20,
-                                        //               color: Color.fromARGB(
-                                        //                   255, 43, 183, 122),
-                                        //             )),
-                                        //       ),
-                                        //       Container(
-                                        //         decoration: BoxDecoration(
-                                        //           color: Color.fromARGB(
-                                        //               245, 245, 245, 245),
-                                        //           // Set the background color of the container
-                                        //           shape: BoxShape
-                                        //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
-                                        //         ),
-                                        //         margin: EdgeInsets.all(2),
-                                        //         child: IconButton(
-                                        //             onPressed: () {},
-                                        //             icon: Icon(
-                                        //               Icons.add,
-                                        //               size: 20,
-                                        //               color: Color.fromARGB(
-                                        //                   255, 43, 183, 122),
-                                        //             )),
-                                        //       ),
-                                        //     ],
-                                        //   ),
-                                        // )
+                                      // child: SingleChildScrollView(
+                                      //   child: Row(
+                                      //     children: [
+                                      //       Container(
+                                      //         decoration: BoxDecoration(
+                                      //           color: Color.fromARGB(
+                                      //               245, 245, 245, 245),
+                                      //           // Set the background color of the container
+                                      //           shape: BoxShape
+                                      //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                      //         ),
+                                      //         margin: EdgeInsets.all(2),
+                                      //         child: IconButton(
+                                      //             onPressed: () {},
+                                      //             icon: Icon(
+                                      //               Icons.add,
+                                      //               size: 20,
+                                      //               color: Color.fromARGB(
+                                      //                   255, 43, 183, 122),
+                                      //             )),
+                                      //       ),
+                                      //       Container(
+                                      //         decoration: BoxDecoration(
+                                      //           color: Color.fromARGB(
+                                      //               245, 245, 245, 245),
+                                      //           // Set the background color of the container
+                                      //           shape: BoxShape
+                                      //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                      //         ),
+                                      //         margin: EdgeInsets.all(2),
+                                      //         child: IconButton(
+                                      //             onPressed: () {},
+                                      //             icon: Icon(
+                                      //               Icons.add,
+                                      //               size: 20,
+                                      //               color: Color.fromARGB(
+                                      //                   255, 43, 183, 122),
+                                      //             )),
+                                      //       ),
+                                      //       Container(
+                                      //         decoration: BoxDecoration(
+                                      //           color: Color.fromARGB(
+                                      //               245, 245, 245, 245),
+                                      //           // Set the background color of the container
+                                      //           shape: BoxShape
+                                      //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                      //         ),
+                                      //         margin: EdgeInsets.all(2),
+                                      //         child: IconButton(
+                                      //             onPressed: () {},
+                                      //             icon: Icon(
+                                      //               Icons.add,
+                                      //               size: 20,
+                                      //               color: Color.fromARGB(
+                                      //                   255, 43, 183, 122),
+                                      //             )),
+                                      //       ),
+                                      //       Container(
+                                      //         decoration: BoxDecoration(
+                                      //           color: Color.fromARGB(
+                                      //               245, 245, 245, 245),
+                                      //           // Set the background color of the container
+                                      //           shape: BoxShape
+                                      //               .rectangle, // You can use BoxShape.rectangle for a rectangular shape
+                                      //         ),
+                                      //         margin: EdgeInsets.all(2),
+                                      //         child: IconButton(
+                                      //             onPressed: () {},
+                                      //             icon: Icon(
+                                      //               Icons.add,
+                                      //               size: 20,
+                                      //               color: Color.fromARGB(
+                                      //                   255, 43, 183, 122),
+                                      //             )),
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // )
                                     ),
 
                                     // child: TextButton(
