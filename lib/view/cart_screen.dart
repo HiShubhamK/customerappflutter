@@ -39,20 +39,52 @@ class _CartScreen extends State<CartScreen> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color.fromARGB(255, 43, 183, 122)),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '\u{20B9}1000', // Replace with your price value
+                style: TextStyle(
+                  color: Colors.red, // Set the text color
+                  fontSize: 18.0, // Set the font size
+                ),
+              ),
+            ),
+            Container(
+              width: 180,
+              color: Color.fromARGB(255, 43, 183, 122),
+              child: TextButton(onPressed: () {},
+                  child: Text('Place Order',style: TextStyle(color: Colors.white),)),
+            )
+            // IconButton(
+            //   icon: Icon(Icons.shopping_cart),
+            //   onPressed: () {
+            //     // Handle cart button click
+            //   },
+            //   color: Colors.white, // Set the icon color
+            // ),
+          ],
+        ),
+      ),
       body: Container(
-        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+        // margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
         child: Column(
           children: [
             Container(
               height: 30,
-              color: Color.fromARGB(255, 43, 183, 122), // Set the text color
-              width: double.infinity, // Make the Container match the parent's width
+              color: Color.fromARGB(255, 43, 183, 122),
+              // Set the text color
+              width: double.infinity,
+              // Make the Container match the parent's width
               child: Center(
                 child: Text(
                   'Deliver to pincode 400078',
-                  style: TextStyle(
-                    color: Colors.white // Set the text color
-                  ),
+                  style: TextStyle(color: Colors.white // Set the text color
+                      ),
                 ),
               ),
             ),
@@ -67,49 +99,52 @@ class _CartScreen extends State<CartScreen> {
             //         ],
             //       ),
             // ),
-            Card(
-              elevation: 5,
-              child: Container(
-                margin: EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text('Order Summary',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500)),
-                    SizedBox(height: 8),
-                    Divider(height: 2, color: Colors.black),
-                    SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Price'), Text('Price')],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Discount'), Text('Price')],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Delivery Charges'), Text('Price')],
-                    ),
-                    SizedBox(height: 8),
-                    Divider(height: 2, color: Colors.black),
-                    SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total Amount',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                        Text('Price', style: TextStyle(color: Colors.red))
-                      ],
-                    ),
-                  ],
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              child: Card(
+                elevation: 5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text('Order Summary',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
+                      SizedBox(height: 8),
+                      Divider(height: 2, color: Colors.black),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text('Price'), Text('Price')],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text('Discount'), Text('Price')],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text('Delivery Charges'), Text('Price')],
+                      ),
+                      SizedBox(height: 8),
+                      Divider(height: 2, color: Colors.black),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total Amount',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          Text('Price', style: TextStyle(color: Colors.red))
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -118,6 +153,7 @@ class _CartScreen extends State<CartScreen> {
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                   child: Card(
                     child: Column(
                       children: [
