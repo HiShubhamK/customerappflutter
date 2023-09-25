@@ -1,16 +1,19 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/model/referrelmodel.dart';
 import 'package:customerappdart/repository/auth_repository.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/utils/utils.dart';
 import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
+import 'package:customerappdart/view/referandearn.dart';
 import 'package:customerappdart/view_model/validateaccount_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../view/Screen_OTP.dart';
+import '../view/myorders.dart';
 
 class AuthViewModel with ChangeNotifier {
   final myRepo = AuthRepository();
@@ -39,6 +42,38 @@ class AuthViewModel with ChangeNotifier {
       }
 
       
+    }).onError((error, stackTrace) {
+      Utils.flushbarErrorMessage(error.toString(), context);
+
+      print(error.toString());
+
+    });
+
+  }
+  Future<void> getReferralCodeResponse(Map<String, dynamic> mobile,BuildContext context) async {
+    myRepo.getReferralCodeResponse(mobile, context).then((value) {
+      if(kDebugMode){
+        // Utils.showsnackbar(value.toString(), context);
+
+        if(value.isSuccess==true){
+          Utils.showsnackbar(value.responseMessage.toString(), context);
+          var values=value.data.toString();
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                 // builder: (context) => OTPScreen(value.data.toString()),
+
+                 builder: (context) => MyOrders(),
+              ),
+              );
+        }
+         // Album.fromJson(jsonDecode(response.body));
+
+        print(value.toString());
+
+      }
+
+
     }).onError((error, stackTrace) {
       Utils.flushbarErrorMessage(error.toString(), context);
 
@@ -112,4 +147,25 @@ class AuthViewModel with ChangeNotifier {
 
   }
 
+}
+class Profile {
+  final String name;
+  final String imageUrl;
+  final String description;
+  final String startdate;
+  final String enddate;
+  final String location;
+  final String amount;
+  final String status;
+
+  Profile({
+    required this.name,
+    required this.imageUrl,
+    required this.description,
+    required this.startdate,
+    required this.enddate,
+    required this.location,
+    required this.amount,
+    required this.status,
+  });
 }

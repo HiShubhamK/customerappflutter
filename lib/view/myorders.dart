@@ -205,15 +205,15 @@ class _Tab1ScreenState extends State<Tab1Screen> {
                     children: [
 
 
-                      ListTile(
-                          leading:Image.asset(
-                            profile.imageUrl,
-                            width: 45, // Set the width of the image
-                            height: 45, // Set the height of the image
-                          ),
-                        title: Text(profile.name),
-                        subtitle: Text(profile.description),
-                      ),
+                      // ListTile(
+                      //     leading:Image.asset(
+                      //       profile.imageUrl,
+                      //       width: 45, // Set the width of the image
+                      //       height: 45, // Set the height of the image
+                      //     ),
+                      //   title: Text(profile.name),
+                      //   subtitle: Text(profile.description),
+                      // ),
                       Divider(
                         height: 1,
                         color: Colors.grey,
@@ -241,7 +241,6 @@ class _Tab1ScreenState extends State<Tab1Screen> {
                               ),
 
                             ),
-                            Icon()
                           ],
                         ),
                       ),

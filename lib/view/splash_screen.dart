@@ -1,6 +1,10 @@
 import 'package:customerappdart/view/login_screen.dart';
+import 'package:customerappdart/view/referandearn.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+
+import 'createcomplaint.dart';
+import 'orderdetailscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -15,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       // Navigate to the main screen
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => CreatecomplaintScreen()),
       );
     });
   }

@@ -1,10 +1,14 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/product_screen.dart';
+import 'package:customerappdart/view/referandearn.dart';
 import 'package:customerappdart/view/support_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
 
+import '../utils/utils.dart';
+import '../view_model/auth_viewmodel.dart';
 import 'account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,10 +76,15 @@ class _DashboardScreenState extends State<HomeScreen> {
             );
           }
           if(index==1){
+            // final authViewModel = Provider.of<AuthViewModel>(context);
+            // Map<String, String> data = {
+            //   'mobileNo':  Utils.mobile,
+            // };
+            // authViewModel.getReferralCodeResponse(data, context);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MyOrders(),
+                builder: (context) => ReferAndEarn(),
                 // builder: (context) => ScreenSupport(),
               ),
             );
@@ -173,7 +182,7 @@ class _DashboardScreenState extends State<HomeScreen> {
               color: Colors.grey,
             ),
             Container(
-              child: Text('Discover Hicare',style: TextStyle(fontSize: 14,color: Colors.grey),),
+              child: Text('Discover',style: TextStyle(fontSize: 14,color: Colors.grey),),
             ),
             Container(
               width: 60,

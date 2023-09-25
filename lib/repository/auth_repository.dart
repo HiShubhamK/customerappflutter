@@ -9,6 +9,8 @@ import 'package:customerappdart/res/app_url.dart';
 import 'package:customerappdart/view/otp_screen.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../model/referrelmodel.dart';
+
 class AuthRepository {
   BaseApiService apiService = NetworkApiService();
   // Future<Album> fetchAlbum() async {
@@ -27,6 +29,17 @@ class AuthRepository {
   // }
 
 
+  Future<ReferrelModel> getReferralCodeResponse(Map<String, dynamic> mobile,BuildContext context) async {
+    try {
+      dynamic response =
+          await apiService.getGetApiResponse(AppUrl.GetAccountReferralCode,mobile);
+
+      final jsonData = ReferrelModel.fromJson(response);
+      return jsonData;
+    } catch (e) {
+      throw e;
+    }
+  }
   Future<OtpResponse> sendOTP(Map<String, dynamic> mobile,BuildContext context) async {
     try {
       dynamic response =
