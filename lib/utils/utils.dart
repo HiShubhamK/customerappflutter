@@ -8,6 +8,7 @@ class Utils {
   static const avaiableCategories = [];
   static var mobile = "";
   static var TOKEN = "";
+  static const productlistdata = [];
 
   static toastMessage(String messsage) {
     Fluttertoast.showToast(

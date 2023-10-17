@@ -68,7 +68,7 @@ class _DashboardScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProductDetailsScreen(),
+                builder: (context) => ProductScreen(),
                 // builder: (context) => ScreenSupport(),
               ),
             );

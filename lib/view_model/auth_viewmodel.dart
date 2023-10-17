@@ -47,6 +47,7 @@ class AuthViewModel with ChangeNotifier {
     });
 
   }
+
   Future<void> validateAccount(Map<String, dynamic> mobile,BuildContext context) async {
     myRepo.validateAccount(mobile, context).then((value) {
       if(kDebugMode){
@@ -80,6 +81,7 @@ class AuthViewModel with ChangeNotifier {
     });
 
   }
+
   Future<void> Dashboard(Map<String, dynamic> mobile,BuildContext context) async {
     myRepo.GetDashboard(mobile, context).then((value) {
       if(kDebugMode){
@@ -97,6 +99,39 @@ class AuthViewModel with ChangeNotifier {
           //     );
         }
          // Album.fromJson(jsonDecode(response.body));
+
+        print(value.toString());
+
+      }
+
+
+    }).onError((error, stackTrace) {
+      Utils.flushbarErrorMessage(error.toString(), context);
+
+      print(error.toString());
+
+    });
+
+  }
+
+  Future<void> getProductlist(Map<String, dynamic> mobile,BuildContext context, String mobileno) async {
+    myRepo.sendOTP(mobile, context).then((value) {
+      if(kDebugMode){
+        // Utils.showsnackbar(value.toString(), context);
+
+        if(value.isSuccess==true){
+          Utils.showsnackbar(value.responseMessage.toString(), context);
+          var values=value.data.toString();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              // builder: (context) => OTPScreen(value.data.toString()),
+
+              builder: (context) => ScreenOTP(otp: values,mobno:mobileno),
+            ),
+          );
+        }
+        // Album.fromJson(jsonDecode(response.body));
 
         print(value.toString());
 

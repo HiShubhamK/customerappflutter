@@ -6,6 +6,7 @@ import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
+import 'package:customerappdart/view/productdetail_screen.dart';
 import 'package:customerappdart/view/splash_screen.dart';
 import 'package:customerappdart/view_model/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 (context) =>
-                SecondScreen()
+                // SecondScreen()
+              ProductDetailsScreen()
             )
         )
     );

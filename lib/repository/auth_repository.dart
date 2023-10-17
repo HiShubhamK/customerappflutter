@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:customerappdart/data/network/BaseApiService.dart';
 import 'package:customerappdart/data/network/NetworkApiService.dart';
+import 'package:customerappdart/model/Product/productDataResponse.dart';
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/model/otpresponse.dart';
 import 'package:customerappdart/model/validateaccount/validateaccountresponse.dart';
@@ -26,7 +27,7 @@ class AuthRepository {
   //   }
   // }
 
-
+  //OtpResponse
   Future<OtpResponse> sendOTP(Map<String, dynamic> mobile,BuildContext context) async {
     try {
       dynamic response =
@@ -38,6 +39,7 @@ class AuthRepository {
       throw e;
     }
   }
+
   Future<ValidateAccountResponse> validateAccount(Map<String, dynamic> data,BuildContext context) async {
     try {
       dynamic response =
@@ -49,6 +51,7 @@ class AuthRepository {
       throw e;
     }
   }
+
   Future<DashboardModel> GetDashboard(Map<String, dynamic> data,BuildContext context) async {
     try {
       dynamic response =
@@ -60,4 +63,6 @@ class AuthRepository {
       throw e;
     }
   }
+
+
 }
