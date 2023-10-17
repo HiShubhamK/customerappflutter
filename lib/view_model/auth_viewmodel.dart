@@ -1,4 +1,5 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/model/productlistresponse.dart';
 import 'package:customerappdart/model/referrelmodel.dart';
 import 'package:customerappdart/repository/auth_repository.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
@@ -6,6 +7,7 @@ import 'package:customerappdart/utils/utils.dart';
 import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
+import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/referandearn.dart';
 import 'package:customerappdart/view_model/validateaccount_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,6 +44,39 @@ class AuthViewModel with ChangeNotifier {
       }
 
       
+    }).onError((error, stackTrace) {
+      Utils.flushbarErrorMessage(error.toString(), context);
+
+      print(error.toString());
+
+    });
+
+  }
+  Future<void> productlistbypincode(Map<String, dynamic> pincode,BuildContext context) async {
+    myRepo.productlistbypincode(pincode, context).then((value) {
+      if(kDebugMode){
+        // Utils.showsnackbar(value.toString(), context);
+
+        if(value.isSuccess==true){
+          Utils.showsnackbar(value.responseMessage.toString(),context);
+          var values=value.data.toString();
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                 // builder: (context) => OTPScreen(value.data.toString()),
+
+                 builder: (context) => ProductScreen(value as ProductListResponse?),
+              ),
+              );
+        }
+         // Album.fromJson(jsonDecode(response.body));
+
+        print(value.toString());
+
+      }
+
+
     }).onError((error, stackTrace) {
       Utils.flushbarErrorMessage(error.toString(), context);
 

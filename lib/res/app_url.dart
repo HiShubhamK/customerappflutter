@@ -4,6 +4,8 @@ class AppUrl{
   static var getotp=baseUrl+'SMS/SendOTP';
   static var GetAccountReferralCode=baseUrl+'Account/GetAccountReferralCode';
   static var getdashboard=baseUrl+'Dashboard/GetDashboard';
+  static var productbaseurl='http://connect.hicare.in/product/api/mobile/';
+  static var productlistbypincode=productbaseurl+'Product/GetProductListByPincode';
 
 
 

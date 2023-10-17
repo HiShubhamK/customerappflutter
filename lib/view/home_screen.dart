@@ -1,4 +1,5 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
+import 'package:customerappdart/view/bookslotscreen.dart';
 import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/referandearn.dart';
@@ -70,7 +71,7 @@ class _DashboardScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProductScreen(),
+                builder: (context) => BookSlotScreen(),
                 // builder: (context) => ScreenSupport(),
               ),
             );

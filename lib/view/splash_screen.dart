@@ -1,5 +1,6 @@
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/referandearn.dart';
+import 'package:customerappdart/view/upcomingservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       // Navigate to the main screen
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => CreatecomplaintScreen()),
+        MaterialPageRoute(builder: (context) => UpcomingServiceScreen()),
       );
     });
   }

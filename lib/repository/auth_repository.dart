@@ -9,6 +9,7 @@ import 'package:customerappdart/res/app_url.dart';
 import 'package:customerappdart/view/otp_screen.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../model/productlistresponse.dart';
 import '../model/referrelmodel.dart';
 
 class AuthRepository {
@@ -46,6 +47,17 @@ class AuthRepository {
           await apiService.getGetApiResponse(AppUrl.getotp,mobile);
 
       final jsonData = OtpResponse.fromJson(response);
+      return jsonData;
+    } catch (e) {
+      throw e;
+    }
+  }
+  Future<ProductListResponse > productlistbypincode(Map<String, dynamic> mobile,BuildContext context) async {
+    try {
+      dynamic response =
+          await apiService.getGetApiResponse(AppUrl.productlistbypincode,mobile);
+
+      final jsonData = ProductListResponse.fromJson(response);
       return jsonData;
     } catch (e) {
       throw e;

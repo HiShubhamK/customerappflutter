@@ -3,11 +3,26 @@ import 'package:another_flushbar/flushbar_route.dart';
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 class Utils {
   static const avaiableCategories = [];
   static var mobile = "";
   static var TOKEN = "";
+  static List<Data>? modelList = [];
+
+  static List<Data>? getModelList() {
+  return modelList;
+  }
+
+  static void addModel(Data model) {
+  modelList!.add(model);
+  }
+
+  static void clearModelList() {
+  modelList!.clear();
+  }
+
 
   static toastMessage(String messsage) {
     Fluttertoast.showToast(
@@ -46,6 +61,12 @@ class Utils {
     return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(backgroundColor: Colors.green, content: Text(messsage)));
   }
+  static String formateddd_mm_yyydate(DateTime date,BuildContext context){
+    String formattedDate = DateFormat('dd-MM-yyyy').format(date);
+    return formattedDate;
+  }
+
 
 }
+
 
