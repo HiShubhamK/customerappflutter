@@ -9,6 +9,7 @@ class Utils {
   static const avaiableCategories = [];
   static var mobile = "";
   static var TOKEN = "";
+  static var customerid = 0;
   static List<Data>? modelList = [];
 
   static List<Data>? getModelList() {

@@ -85,6 +85,39 @@ class AuthViewModel with ChangeNotifier {
     });
 
   }
+  Future<void> GetProductCountInCart(Map<String, dynamic> userid,BuildContext context) async {
+    myRepo.GetProductCountInCart(userid, context).then((value) {
+      if(kDebugMode){
+        // Utils.showsnackbar(value.toString(), context);
+
+        if(value.isSuccess==true){
+          Utils.showsnackbar(value.data.toString(),context);
+
+
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //        // builder: (context) => OTPScreen(value.data.toString()),
+          //
+          //        builder: (context) => ProductScreen(value as ProductListResponse?),
+          //     ),
+          //     );
+        }
+         // Album.fromJson(jsonDecode(response.body));
+
+        print(value.toString());
+
+      }
+
+
+    }).onError((error, stackTrace) {
+      Utils.flushbarErrorMessage(error.toString(), context);
+
+      print(error.toString());
+
+    });
+
+  }
   Future<void> getReferralCodeResponse(Map<String, dynamic> mobile,BuildContext context) async {
     myRepo.getReferralCodeResponse(mobile, context).then((value) {
       if(kDebugMode){
@@ -125,6 +158,7 @@ class AuthViewModel with ChangeNotifier {
         if(value.isSuccess==true){
           Utils.showsnackbar(value.responseMessage.toString(), context);
           Utils.TOKEN=value.data!.token.toString();
+          Utils.customerid=value.data!.productCustomerData!.id as int;
           ValidateAccountViewModel validateAccountViewModel=new ValidateAccountViewModel();
           validateAccountViewModel.saveToken(value);
 

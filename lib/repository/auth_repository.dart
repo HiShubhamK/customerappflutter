@@ -4,6 +4,7 @@ import 'package:customerappdart/data/network/BaseApiService.dart';
 import 'package:customerappdart/data/network/NetworkApiService.dart';
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/model/otpresponse.dart';
+import 'package:customerappdart/model/productcount.dart';
 import 'package:customerappdart/model/validateaccount/validateaccountresponse.dart';
 import 'package:customerappdart/res/app_url.dart';
 import 'package:customerappdart/view/otp_screen.dart';
@@ -58,6 +59,17 @@ class AuthRepository {
           await apiService.getGetApiResponse(AppUrl.productlistbypincode,mobile);
 
       final jsonData = ProductListResponse.fromJson(response);
+      return jsonData;
+    } catch (e) {
+      throw e;
+    }
+  }
+  Future<ProductCount> GetProductCountInCart(Map<String, dynamic> mobile,BuildContext context) async {
+    try {
+      dynamic response =
+          await apiService.getGetApiResponse(AppUrl.GetProductCountInCart,mobile);
+
+      final jsonData = ProductCount.fromJson(response);
       return jsonData;
     } catch (e) {
       throw e;

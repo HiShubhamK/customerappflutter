@@ -1,5 +1,6 @@
 
 import 'package:customerappdart/model/productlistresponse.dart';
+import 'package:customerappdart/utils/utils.dart';
 import 'package:customerappdart/view/bookslotscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -465,7 +466,13 @@ class _ProductScreen extends StatelessWidget {
                                               textStyle: const TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500)),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Map<String, int> data = {
+                                              'userId':Utils.customerid ,
+                                            };
+                                            authViewModel.GetProductCountInCart(data,context);
+
+                                          },
                                           child: const Text('ADD TO CART'),
                                         ),
                                       ),
