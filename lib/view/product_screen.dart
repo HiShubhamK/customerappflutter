@@ -11,16 +11,10 @@ class ProductScreen extends StatelessWidget {
   final ProductListResponse? values;
   ProductScreen(this.values);
 
-
-
-
-
   @override
   _ProductScreen createState() {
     return _ProductScreen(values!);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +82,10 @@ class ProductScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       child: Card(
+                        elevation: 5.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0), // Adjust the radius as needed
+                        ),
                         margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
                         child: Column(
                           children: [
@@ -98,21 +96,36 @@ class ProductScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(' Save '+data2[index].discount.toString(),
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              backgroundColor: Colors.red)),
-                                    ),
-                                    SizedBox(height: 5),
                                     Container(
-                                        margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                        child: Image.asset(
-                                          'images/splash.png',
-                                          height: 150,
-                                          width: 130,
-                                        )),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(0, 0, 2, 2),
+                                        child: Text(' Save '+data2[index].discount.toString(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 12,
+                                                backgroundColor: Colors.red)),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 130,
+                                      width: 130,
+                                      margin: EdgeInsets.fromLTRB(5, 2, 5, 2),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(data2[index].productThumbnail.toString()),
+                                            
+                                          )
+                                        ),
+                                        // child:Image.network('https://s3.ap-south-1.amazonaws.com/hicare-others/ed8791c8-77d0-4f2f-986d-a11679f9f790.jpeg'),
+                                        // child: Image.asset(
+                                        //   'images/splash.png',
+                                        //   height: 150,
+                                        //   width: 130,
+                                        // )
+                                    ),
                                   ],
                                 ),
                                 SizedBox(height: 10),
@@ -124,14 +137,19 @@ class ProductScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
+                                        width: 180,
                                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                        child: Text(data2![index].productName.toString(),
-                                            maxLines: 3,
-                                            overflow: TextOverflow.visible,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500)),
+                                        child: Column(
+                                          children: [
+                                            Text(data2![index].productName.toString(),
+                                                maxLines: 4,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500)),
+                                          ],
+                                        ),
                                       ),
                                       SizedBox(height: 3),
                                       Container(
@@ -194,7 +212,6 @@ class ProductScreen extends StatelessWidget {
                                                   TextDecoration.lineThrough)),
                                         ],
                                       ),
-
                                       SizedBox(height: 3),
                                       Row(
                                         children: [
@@ -334,7 +351,7 @@ class _ProductScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       child: Card(
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: Column(
                           children: [
                             Row(
@@ -345,7 +362,7 @@ class _ProductScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.fromLTRB(0,0,0,2),
                                       child: Text(' Save  '+data2[index].discount.toString(),
                                           style: TextStyle(
                                               color: Colors.white,
@@ -370,10 +387,12 @@ class _ProductScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
+                                        width: 49,
+                                        height: 50,
                                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                        child: Text(data2![index].productName.toString(),
+                                        child: Text('AutoMos + 1 Refill',
                                             maxLines: 3,
-                                            overflow: TextOverflow.visible,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
@@ -495,10 +514,6 @@ class _ProductScreen extends StatelessWidget {
                         ),
                       ),
                     );
-
-                    // return ListTile(
-                    //   title: Text(items[index]),
-                    // );
                   },
                 )),
           ],
