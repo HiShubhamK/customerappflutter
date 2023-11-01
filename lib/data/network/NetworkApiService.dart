@@ -23,7 +23,6 @@ class NetworkApiService extends BaseApiService{
         },).timeout(Duration(seconds: 10));
       responseJson=returnResponse(response);
     }on SocketException{
-
       throw FetchDataException('No Internet Connection');
     }
     return responseJson;

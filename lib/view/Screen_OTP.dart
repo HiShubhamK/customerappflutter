@@ -184,7 +184,7 @@ class _ScreenOTP extends State<ScreenOTP> {
                       };
                       if (verificationCode1.toString().trim() ==
                           widget.otp.toString().trim()) {
-                        Utils.toastMessage('Login successfully!');
+                        // Utils.toastMessage('Login successfully!');
                         authViewModel.validateAccount(data, context);
                       } else {
                         Utils.showsnackbar('Please enter valid otp', context);

@@ -71,13 +71,13 @@ class _DashboardScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => BookSlotScreen(),
+                builder: (context) => ScreenSupport(),
                 // builder: (context) => ScreenSupport(),
               ),
             );
           }
           if(index==1){
-            // final authViewModel = Provider.of<AuthViewModel>(context);
+
             // Map<String, String> data = {
             //   'mobileNo':  Utils.mobile,
             // };
@@ -90,6 +90,7 @@ class _DashboardScreenState extends State<HomeScreen> {
               ),
             );
           } if(index==3){
+
             Navigator.push(
               context,
               MaterialPageRoute(

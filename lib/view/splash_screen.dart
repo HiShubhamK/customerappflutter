@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       // Navigate to the main screen
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => UpcomingServiceScreen()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     });
   }
