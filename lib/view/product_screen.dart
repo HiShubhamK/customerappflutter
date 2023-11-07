@@ -20,20 +20,9 @@ class _ProductScreen extends State<ProductScreen> {
   List<Map<String, dynamic>> products = [];
   List<Product> productList = [];
 
-  List<String> items = [
-    'Automos one refill 1',
-    'Automos one refill  2',
-    'Automos one refill  3',
-    'Automos one refill 4',
-    'Automos one refill  5',
-    // Add more items as needed
-  ];
-
   @override
   void initState() {
     super.initState();
-    // Make API call when the widget is first created
-    // _getDataFromApi();
     fetchData();
   }
 
@@ -107,19 +96,25 @@ class _ProductScreen extends State<ProductScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(' Save  '+productList[index].discount.toString(),
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Text(
+                                      ' Save  ' +
+                                          '\u{20B9}' +
+                                          productList[index]
+                                              .discount
+                                              .toString() +
+                                          ' ',
                                       style: TextStyle(
                                           color: Colors.white,
                                           backgroundColor: Colors.red)),
                                 ),
-                                SizedBox(height: 5),
+                                // SizedBox(height: 2),
                                 Container(
                                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                     child: Image.network(
                                       productList[index].productThumbnail,
-                                      height: 150,
-                                      width: 130,
+                                      height: 170,
+                                      width: 140,
                                     )),
                               ],
                             ),
@@ -132,11 +127,14 @@ class _ProductScreen extends State<ProductScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                    width: 180,
+                                    width: 170,
                                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                                     child: Column(
                                       children: [
-                                        Text(productList[index].productName.toString(),
+                                        Text(
+                                            productList[index]
+                                                .productName
+                                                .toString(),
                                             maxLines: 4,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -199,7 +197,10 @@ class _ProductScreen extends State<ProductScreen> {
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 13)),
-                                      Text(productList[index].discountedPrice.toString(),
+                                      Text(
+                                          productList[index]
+                                              .discountedPrice
+                                              .toString(),
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 18,
@@ -211,7 +212,10 @@ class _ProductScreen extends State<ProductScreen> {
                                               fontSize: 14,
                                               decoration:
                                                   TextDecoration.lineThrough)),
-                                      Text(productList[index].pricePerQuantity.toString(),
+                                      Text(
+                                          productList[index]
+                                              .pricePerQuantity
+                                              .toString(),
                                           style: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 14,
@@ -245,7 +249,9 @@ class _ProductScreen extends State<ProductScreen> {
                                           textStyle: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500)),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        addtocart(productList[index].productId,1,9846);
+                                      },
                                       child: const Text('ADD TO CART'),
                                     ),
                                   ),
@@ -270,7 +276,8 @@ class _ProductScreen extends State<ProductScreen> {
 
   Future<void> _getDataFromApi() async {
     // Replace the URL with your API endpoint for fetching a list
-    String apiUrl = 'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
+    String apiUrl =
+        'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
 
     final response = await http.get(Uri.parse(apiUrl));
 
@@ -284,21 +291,47 @@ class _ProductScreen extends State<ProductScreen> {
     }
   }
 
+
+
   Future<void> fetchData() async {
-    String apiUrl = 'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
-    final response = await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
+    String apiUrl =
+        'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
+    final response =
+        await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
 
     if (response.statusCode == 200) {
-
       Map<String, dynamic> jsonData = json.decode(response.body);
       List<dynamic> jsonProducts = jsonData['Data'];
 
       setState(() {
-        productList = jsonProducts.map((json) => Product.fromJson(json)).toList();
+        productList =
+            jsonProducts.map((json) => Product.fromJson(json)).toList();
         Utils.showsnackbar('Success', context);
       });
     } else {
-      Utils.showsnackbar('Failed to load data. Status code: ${response.statusCode}',context);
+      Utils.showsnackbar(
+          'Failed to load data. Status code: ${response.statusCode}', context);
     }
   }
+
+  Future<void> addtocart(int productId, int i, int user) async {
+    String apiUrl = 'http://connect.hicare.in/product/api/mobile/Cart/AddProductInCart?quantity=$i&productId=$productId&userId=9846';
+    final response =
+    await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
+
+    if (response.statusCode == 200) {
+
+      Map<String, dynamic> jsonData = json.decode(response.body);
+
+      bool isSuccess = jsonData['IsSuccess'];
+      int data = jsonData['Data'];
+      String responseMessage = jsonData['ResponseMessage'];
+      Utils.showsnackbar(data.toString(), context);
+
+    } else {
+      Utils.showsnackbar(
+          'Failed to load data. Status code: ${response.statusCode}', context);
+    }
+  }
+
 }
