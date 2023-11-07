@@ -332,10 +332,19 @@ class _UpcomingService extends State<UpcomingServiceScreen> {
                                   ),
                                   TextButton(
                                     onPressed: () async{
+
+                                      // {"ServiceCenter_Id":"a1u10000004GlpUAAS","SlotDate":"2023-10-25","TaskId":"a232x000003AhifAAC","ServiceType":"Pest","Long":"72.92474","SkillId":"a1x10000008ocyEAAQ","Lat":"19.108508"}
                                       Map<String, String> data = {
-                                        'pincode':'400079' ,
+                                        'ServiceCenter_Id':'a1u10000004GlpUAAS' ,
+                                        'SlotDate':'2023-10-25' ,
+                                        'TaskId':'a232x000003AhifAAC' ,
+                                        'ServiceType':'Pest' ,
+                                        'Long':'72.92474',
+                                        'SkillId':'a1x10000008ocyEAAQ',
+                                        'Lat':'19.108508',
+
                                       };
-                                      authViewModel.productlistbypincode(data,context);
+                                      authViewModel.getSlot(data,context);
 
                                       // Navigator.push(
                                       //   context,

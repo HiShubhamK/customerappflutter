@@ -7,5 +7,6 @@ class AppUrl{
   static var productbaseurl='http://connect.hicare.in/product/api/mobile/';
   static var productlistbypincode=productbaseurl+'Product/GetProductListByPincode';
   static var GetProductCountInCart=productbaseurl+'Cart/GetProductCountInCart';
-
+  static var GetCartSummary=productbaseurl+'Cart/GetCartSummary';
+  static var getslot=baseUrl+'Slot/GetSlot';
 }

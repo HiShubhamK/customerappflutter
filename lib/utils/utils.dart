@@ -4,6 +4,7 @@ import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Utils {
   static const avaiableCategories = [];
@@ -13,17 +14,16 @@ class Utils {
   static List<Data>? modelList = [];
 
   static List<Data>? getModelList() {
-  return modelList;
+    return modelList;
   }
 
   static void addModel(Data model) {
-  modelList!.add(model);
+    modelList!.add(model);
   }
 
   static void clearModelList() {
-  modelList!.clear();
+    modelList!.clear();
   }
-
 
   static toastMessage(String messsage) {
     Fluttertoast.showToast(
@@ -62,12 +62,18 @@ class Utils {
     return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(backgroundColor: Colors.green, content: Text(messsage)));
   }
-  static String formateddd_mm_yyydate(DateTime date,BuildContext context){
+
+  static String formateddd_mm_yyydate(DateTime date, BuildContext context) {
     String formattedDate = DateFormat('dd-MM-yyyy').format(date);
     return formattedDate;
   }
 
-
+  static Future<void> saveToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', token);
+  }
+  static Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token');
+  }
 }
-
-

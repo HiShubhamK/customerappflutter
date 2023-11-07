@@ -1,7 +1,10 @@
+import 'package:customerappdart/model/getslotresponse.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../utils/utils.dart';
+import '../view_model/auth_viewmodel.dart';
 
 // stateful widget created for calendar class
 // class BookSlotScreen extends StatelessWidget {
@@ -12,13 +15,8 @@ import '../utils/utils.dart';
 //   );
 // }
 // }
-List<String> items = [
-  'Available',
-  'Available',
-  'Available',
-  'Available',
-  'Available',
-  'Available',
+List<Data> items = [
+
   // Add more items as needed
 ];
 
@@ -32,12 +30,20 @@ List<IconData> icons = [
 ];
 
 class BookSlotScreen extends StatefulWidget {
+  final GetSlotResponse? values;
+  BookSlotScreen(this.values);
+
   @override
-  _CalendarAppState createState() => _CalendarAppState();
+  _CalendarAppState createState() => _CalendarAppState(values!);
 }
 
 class _CalendarAppState extends State<BookSlotScreen> {
   DateTime today = DateTime.now();
+  final GetSlotResponse? values;
+
+  _CalendarAppState(this.values);
+
+
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -96,6 +102,7 @@ class _CalendarAppState extends State<BookSlotScreen> {
   }
 
   Widget Content() {
+    items.add(values!.data! as Data);
     return Column(
 
       children: [
@@ -174,11 +181,12 @@ class _CalendarAppState extends State<BookSlotScreen> {
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 5.0,
           ),
-          itemCount: 6,
+          itemCount: values!.data!.length,
           itemBuilder: (context, index) {
             // Customize the grid item here
+            items=values!.data!;
             return GridItem(
-                item: items[index], icon: icons[index], date: today);
+                item: values!.data![index], icon: icons[index], date: today);
           },
         )
 
@@ -222,7 +230,7 @@ class _CalendarAppState extends State<BookSlotScreen> {
 }
 
 class GridItem extends StatelessWidget {
-  final String item;
+  final Data item;
   final IconData icon;
   final DateTime date;
 
@@ -262,7 +270,7 @@ class GridItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  item,
+                  item.scheduledDateText.toString(),
                   style: TextStyle(
                     fontSize: 12.0,
                     color: Colors.green,
