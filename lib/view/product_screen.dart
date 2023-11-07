@@ -19,11 +19,13 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreen extends State<ProductScreen> {
   List<Map<String, dynamic>> products = [];
   List<Product> productList = [];
+  var cartcount=0;
 
   @override
   void initState() {
     super.initState();
     fetchData();
+    cartCount();
   }
 
   @override
@@ -304,8 +306,7 @@ class _ProductScreen extends State<ProductScreen> {
       List<dynamic> jsonProducts = jsonData['Data'];
 
       setState(() {
-        productList =
-            jsonProducts.map((json) => Product.fromJson(json)).toList();
+        productList = jsonProducts.map((json) => Product.fromJson(json)).toList();
         Utils.showsnackbar('Success', context);
       });
     } else {
@@ -333,5 +334,33 @@ class _ProductScreen extends State<ProductScreen> {
           'Failed to load data. Status code: ${response.statusCode}', context);
     }
   }
+
+
+  Future<void> cartCount() async {
+    String apiUrl = 'http://connect.hicare.in/product/api/mobile/Cart/GetProductCountInCart?userId=9846';
+    final response =
+    await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
+
+    if (response.statusCode == 200) {
+
+      Map<String, dynamic> jsonData = json.decode(response.body);
+
+      bool isSuccess = jsonData['IsSuccess'];
+      int data = jsonData['Data'];
+      String responseMessage = jsonData['ResponseMessage'];
+      Utils.showsnackbar(data.toString(), context);
+
+      setState(() {
+        cartcount=data;
+            Utils.showsnackbar('Success', context);
+      });
+
+    } else {
+      Utils.showsnackbar(
+          'Failed to load data. Status code: ${response.statusCode}', context);
+    }
+  }
+
+
 
 }
