@@ -67,6 +67,37 @@ class _CartScreen extends State<CartScreen> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color.fromARGB(255, 43, 183, 122)),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '\u{20B9}1000', // Replace with your price value
+                style: TextStyle(
+                  color: Colors.red, // Set the text color
+                  fontSize: 18.0, // Set the font size
+                ),
+              ),
+            ),
+            Container(
+              width: 180,
+              color: Color.fromARGB(255, 43, 183, 122),
+              child: TextButton(onPressed: () {},
+                  child: Text('Place Order',style: TextStyle(color: Colors.white),)),
+            )
+            // IconButton(
+            //   icon: Icon(Icons.shopping_cart),
+            //   onPressed: () {
+            //     // Handle cart button click
+            //   },
+            //   color: Colors.white, // Set the icon color
+            // ),
+          ],
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
         child: Column(
