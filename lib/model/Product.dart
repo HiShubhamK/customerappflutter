@@ -9,6 +9,8 @@ class Product {
   int pricePerQuantity;
   int discountedPrice;
 
+
+
   // String discountStartDate;
   // String discountEndDate;
   // int installationCharges;
