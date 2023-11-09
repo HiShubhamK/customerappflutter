@@ -1,6 +1,7 @@
 import 'package:customerappdart/LoginPage.dart';
 import 'package:customerappdart/main.dart';
 import 'package:customerappdart/utils/routes/routes_name.dart';
+import 'package:customerappdart/view/cart_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/splash_screen.dart';
@@ -22,9 +23,11 @@ class Routes {
       case RoutesName.splash:
         return MaterialPageRoute(
             builder: (BuildContext context) => SplashScreen());
- case RoutesName.myorders:
-        return MaterialPageRoute(
-            builder: (BuildContext context) => MyOrders());
+      case RoutesName.myorders:
+        return MaterialPageRoute(builder: (BuildContext context) => MyOrders());
+
+      case RoutesName.mycart:
+        return MaterialPageRoute(builder: (BuildContext context) => CartScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {
