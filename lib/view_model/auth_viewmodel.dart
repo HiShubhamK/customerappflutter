@@ -71,7 +71,7 @@ class AuthViewModel with ChangeNotifier {
               MaterialPageRoute(
                  // builder: (context) => OTPScreen(value.data.toString()),
 
-                 builder: (context) => ProductScreen(value as ProductListResponse?),
+                 builder: (context) => ProductScreen(),
               ),
               );
         }
@@ -189,7 +189,7 @@ class AuthViewModel with ChangeNotifier {
 
   }
   Future<void> validateAccount(Map<String, dynamic> mobile,BuildContext context) async {
-    myRepo.validateAccount(mobile, context).then((value) {
+    myRepo.validateAccount(mobile, context).then((value) async {
       if(kDebugMode){
         // Utils.showsnackbar(value.toString(), context);
 
@@ -207,7 +207,7 @@ class AuthViewModel with ChangeNotifier {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UpcomingServiceScreen(),
+              builder: (context) => HomeScreen(),
             ),
           );
         }

@@ -5,13 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:developer';
 
 class Utils {
   static const avaiableCategories = [];
   static var mobile = "";
   static var TOKEN = "";
   static var customerid = 0;
+  static var isLoggedIn = false;
   static List<Data>? modelList = [];
+
+  static void fetchDataFromAPI(dynamic message) {
+    // ... API call or fetching data
+
+    // Print API response
+    print('API Response: $message');
+  }
+
+  static void logToConsole(dynamic message) {
+    log(
+      message.toString(),
+      name: 'CustomerappResponse:',
+      error: message is Exception ? message : null,
+    );
+  }
 
   static List<Data>? getModelList() {
     return modelList;
@@ -72,6 +89,7 @@ class Utils {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('token', token);
   }
+
   static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('token');

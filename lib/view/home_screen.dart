@@ -2,17 +2,20 @@ import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/view/bookslotscreen.dart';
 import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/product_screen.dart';
+import 'package:customerappdart/view/productdetailscreen.dart';
 import 'package:customerappdart/view/referandearn.dart';
 import 'package:customerappdart/view/support_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/utils.dart';
 import '../view_model/auth_viewmodel.dart';
 import 'account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
@@ -49,6 +52,8 @@ class _DashboardScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
+
     return Scaffold(
 
       appBar: AppBar(
@@ -67,40 +72,37 @@ class _DashboardScreenState extends State<HomeScreen> {
         selectedItemColor: Color.fromARGB(255, 43, 183, 122),
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
-          if(index==2){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ScreenSupport(),
-                // builder: (context) => ScreenSupport(),
-              ),
-            );
+          if (index == 2) {
+            Map<String, String> data = {
+              'pincode':'400079' ,
+            };
+            authViewModel.productlistbypincode(data,context);
           }
           if(index==1){
 
-            // Map<String, String> data = {
-            //   'mobileNo':  Utils.mobile,
-            // };
-            // authViewModel.getReferralCodeResponse(data, context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ReferAndEarn(),
-                // builder: (context) => ScreenSupport(),
-              ),
-            );
+          // Map<String, String> data = {
+          //   'mobileNo':  Utils.mobile,
+          // };
+          // authViewModel.getReferralCodeResponse(data, context);
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+          builder: (context) => MyOrders(),
+          // builder: (context) => ScreenSupport(),
+          ),
+          );
           } if(index==3){
 
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AccountScreen(),
-                // builder: (context) => ScreenSupport(),
-              ),
-            );
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+          builder: (context) => AccountScreen(),
+          // builder: (context) => ScreenSupport(),
+          ),
+          );
           }
           setState(() {
-            _currentIndex = index;
+          _currentIndex = index;
           });
         },
         items: [
@@ -160,7 +162,10 @@ class _DashboardScreenState extends State<HomeScreen> {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -184,7 +189,8 @@ class _DashboardScreenState extends State<HomeScreen> {
               color: Colors.grey,
             ),
             Container(
-              child: Text('Discover',style: TextStyle(fontSize: 14,color: Colors.grey),),
+              child: Text('Discover',
+                style: TextStyle(fontSize: 14, color: Colors.grey),),
             ),
             Container(
               width: 60,

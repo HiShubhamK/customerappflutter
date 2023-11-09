@@ -17,9 +17,7 @@ class Routes {
       case RoutesName.home:
         return MaterialPageRoute(
             builder: (BuildContext context) => MyHomePage());
-      case RoutesName.login:
-        return MaterialPageRoute(
-            builder: (BuildContext context) => LoginScreen());
+
       case RoutesName.splash:
         return MaterialPageRoute(
             builder: (BuildContext context) => SplashScreen());
