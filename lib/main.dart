@@ -6,6 +6,7 @@ import 'package:customerappdart/utils/routes/routes_name.dart';
 import 'package:customerappdart/view/home_screen.dart';
 import 'package:customerappdart/view/login_screen.dart';
 import 'package:customerappdart/view/otp_screen.dart';
+import 'package:customerappdart/view/productdetailscreen.dart';
 import 'package:customerappdart/view/splash_screen.dart';
 import 'package:customerappdart/view_model/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class SecondScreen extends StatelessWidget {
           splash: AssetImage(
            'images/splash.png'
           ),
-          nextScreen: LoginScreen(),
+          nextScreen: ProductDetailScreen(),
 
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.white));
