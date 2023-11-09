@@ -67,6 +67,37 @@ class _CartScreen extends State<CartScreen> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Color.fromARGB(255, 43, 183, 122)),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '\u{20B9}1000', // Replace with your price value
+                style: TextStyle(
+                  color: Colors.red, // Set the text color
+                  fontSize: 18.0, // Set the font size
+                ),
+              ),
+            ),
+            Container(
+              width: 180,
+              color: Color.fromARGB(255, 43, 183, 122),
+              child: TextButton(onPressed: () {},
+                  child: Text('Place Order',style: TextStyle(color: Colors.white),)),
+            )
+            // IconButton(
+            //   icon: Icon(Icons.shopping_cart),
+            //   onPressed: () {
+            //     // Handle cart button click
+            //   },
+            //   color: Colors.white, // Set the icon color
+            // ),
+          ],
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
         child: Column(
@@ -149,18 +180,19 @@ class _CartScreen extends State<CartScreen> {
                                               color: Colors.white,
                                               backgroundColor: Colors.red)),
                                     ),
-                                    SizedBox(height: 5),
+                                    SizedBox(height: 2),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                         child: Image.network(
                                           productList[index].productThumbnail,
-                                          height: 150,
+                                          height: 170,
                                           width: 130,
                                         )),
                                   ],
                                 ),
                                 SizedBox(height: 10),
                                 Container(
+                                  width: 170,
                                   margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,7 +200,6 @@ class _CartScreen extends State<CartScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: 170,
                                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                                         child: Text(
                                             productList[index]
@@ -250,7 +281,6 @@ class _CartScreen extends State<CartScreen> {
                                                   TextDecoration.lineThrough)),
                                         ],
                                       ),
-
                                       SizedBox(height: 3),
                                       Row(
                                         children: [
@@ -272,29 +302,37 @@ class _CartScreen extends State<CartScreen> {
                                           Clip.antiAliasWithSaveLayer,
                                           child: Row(
                                             children: <Widget>[
-                                              IconButton(
-                                                icon: Icon(Icons.home),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                               Flexible(
+                                                 child: IconButton(
+                                                    icon: Icon(Icons.home),
+                                                    onPressed: () {
+                                                      // Add your button logic here
+                                                    },
+                                                  ),
+                                               ),
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.settings),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
-                                              IconButton(
-                                                icon: Icon(Icons.settings),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.mail),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
-                                              IconButton(
-                                                icon: Icon(Icons.mail),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
-                                              ),
-                                              IconButton(
-                                                icon: Icon(Icons.person),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.person),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
                                             ],
                                           ),
