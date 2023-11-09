@@ -180,18 +180,19 @@ class _CartScreen extends State<CartScreen> {
                                               color: Colors.white,
                                               backgroundColor: Colors.red)),
                                     ),
-                                    SizedBox(height: 5),
+                                    SizedBox(height: 2),
                                     Container(
                                         margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                         child: Image.network(
                                           productList[index].productThumbnail,
-                                          height: 150,
+                                          height: 170,
                                           width: 130,
                                         )),
                                   ],
                                 ),
                                 SizedBox(height: 10),
                                 Container(
+                                  width: 170,
                                   margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,7 +200,6 @@ class _CartScreen extends State<CartScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: 170,
                                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                                         child: Text(
                                             productList[index]
@@ -281,7 +281,6 @@ class _CartScreen extends State<CartScreen> {
                                                   TextDecoration.lineThrough)),
                                         ],
                                       ),
-
                                       SizedBox(height: 3),
                                       Row(
                                         children: [
@@ -303,29 +302,37 @@ class _CartScreen extends State<CartScreen> {
                                           Clip.antiAliasWithSaveLayer,
                                           child: Row(
                                             children: <Widget>[
-                                              IconButton(
-                                                icon: Icon(Icons.home),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                               Flexible(
+                                                 child: IconButton(
+                                                    icon: Icon(Icons.home),
+                                                    onPressed: () {
+                                                      // Add your button logic here
+                                                    },
+                                                  ),
+                                               ),
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.settings),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
-                                              IconButton(
-                                                icon: Icon(Icons.settings),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.mail),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
-                                              IconButton(
-                                                icon: Icon(Icons.mail),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
-                                              ),
-                                              IconButton(
-                                                icon: Icon(Icons.person),
-                                                onPressed: () {
-                                                  // Add your button logic here
-                                                },
+                                              Flexible(
+                                                child: IconButton(
+                                                  icon: Icon(Icons.person),
+                                                  onPressed: () {
+                                                    // Add your button logic here
+                                                  },
+                                                ),
                                               ),
                                             ],
                                           ),
