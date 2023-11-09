@@ -75,7 +75,7 @@ class _CartScreen extends State<CartScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                '\u{20B9}1000', // Replace with your price value
+                '\u{20B9}$finalAmount', // Replace with your price value
                 style: TextStyle(
                   color: Colors.red, // Set the text color
                   fontSize: 18.0, // Set the font size
@@ -126,15 +126,15 @@ class _CartScreen extends State<CartScreen> {
                     SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Price'), Text('Price')],
+                      children: [Text('Price'), Text(totalAmount.toString())],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Discount'), Text('Price')],
+                      children: [Text('Discount'), Text(totalDiscount.toString())],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Delivery Charges'), Text('Price')],
+                      children: [Text('Delivery Charges'), Text(finalAmount.toString())],
                     ),
                     SizedBox(height: 8),
                     Divider(height: 2, color: Colors.black),
@@ -146,7 +146,7 @@ class _CartScreen extends State<CartScreen> {
                           'Total Amount',
                           style: TextStyle(color: Colors.red),
                         ),
-                        Text('Price', style: TextStyle(color: Colors.red))
+                        Text(finalAmount.toString(), style: TextStyle(color: Colors.red))
                       ],
                     ),
                   ],
@@ -483,13 +483,14 @@ class _CartScreen extends State<CartScreen> {
     String apiUrl = 'https://connect.hicare.in/product/api/mobile/Cart/GetCartSummary?userId=9846&pincode=400079&voucherCode=';
     final response = await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
 
+
     if (response.statusCode == 200) {
-
-      Map<String, dynamic> jsonData = json.decode(response.body);
-
       setState(() {
+
+        Map<String, dynamic> jsonData = json.decode(response.body);
         Map<String, dynamic> data = jsonData['Data'];
-         totalAmount = data['TotalAmount'];
+
+          totalAmount = data['TotalAmount'];
          finalAmount = data['FinalAmount'];
          totalDiscount = data['TotalDiscount'];
          totalGST = data['TotalGST'];

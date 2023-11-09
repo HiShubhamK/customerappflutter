@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../model/Product.dart';
 import '../utils/utils.dart';
+import 'cart_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   @override
@@ -73,7 +74,14 @@ class _ProductScreen extends State<ProductScreen> {
               IconButton(
                 icon: Icon(Icons.shopping_cart,
                     color: Color.fromARGB(255, 43, 183, 122)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -296,10 +304,8 @@ class _ProductScreen extends State<ProductScreen> {
 
 
   Future<void> fetchData() async {
-    String apiUrl =
-        'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
-    final response =
-        await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
+    String apiUrl = 'http://connect.hicare.in/product/api/mobile/Product/GetProductListByPincode?pincode=400079';
+    final response = await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
 
     if (response.statusCode == 200) {
       Map<String, dynamic> jsonData = json.decode(response.body);
