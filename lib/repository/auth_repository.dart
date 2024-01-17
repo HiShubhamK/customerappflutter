@@ -114,7 +114,7 @@ class AuthRepository {
       Map<String, dynamic> data, BuildContext context) async {
     try {
       dynamic response =
-          await apiService.getPostApiResponse(AppUrl.getdashboard, data);
+          await apiService.getGetApiResponse(AppUrl.getdashboard, data);
 
       final jsonData1 = DashboardModel.fromJson(response);
       return jsonData1;

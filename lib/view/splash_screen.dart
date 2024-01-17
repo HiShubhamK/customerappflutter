@@ -1,5 +1,7 @@
 import 'package:customerappdart/view/login_screen.dart';
+import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/productdetailscreen.dart';
+import 'package:customerappdart/view/productlistscreen.dart';
 import 'package:customerappdart/view/referandearn.dart';
 import 'package:customerappdart/view/upcomingservices.dart';
 import 'package:flutter/material.dart';

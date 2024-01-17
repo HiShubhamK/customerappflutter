@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/view/bookslotscreen.dart';
 import 'package:customerappdart/view/myorders.dart';
@@ -9,10 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
+import '../res/app_url.dart';
 import '../utils/utils.dart';
 import '../view_model/auth_viewmodel.dart';
 import 'account_screen.dart';
+import 'createcomplaint.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -22,11 +27,17 @@ class HomeScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
 
   final List<Widget> _pages = [
     _buildCarouselSlider(), // Add the carousel_slider page
     Center(
       child: Text("Home"),
+
     ),
     Center(
       child: Text("Orders"),
@@ -38,6 +49,7 @@ class _DashboardScreenState extends State<HomeScreen> {
       child: Text("Account"),
     ),
   ];
+
 
   // final List<Widget> _pages = [
   //   // Add your content for different pages here
@@ -53,7 +65,11 @@ class _DashboardScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final authViewModel = Provider.of<AuthViewModel>(context);
+    Map<String, dynamic> data = {
+      'mobileNo': Utils.mobile.toString(),
+    };
 
+    authViewModel.Dashboard(data, context);
     return Scaffold(
 
       appBar: AppBar(
@@ -87,7 +103,7 @@ class _DashboardScreenState extends State<HomeScreen> {
           Navigator.push(
           context,
           MaterialPageRoute(
-          builder: (context) => MyOrders(),
+          builder: (context) => CreateComplaint(),
           // builder: (context) => ScreenSupport(),
           ),
           );
@@ -199,9 +215,62 @@ class _DashboardScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: GridView.count(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(), // Prevent scrolling
+            crossAxisCount: 3,
+            childAspectRatio: 1.2, // Adjust aspect ratio as needed
+            children: [
+              _buildCardIcon("assets/icon1.png", "Name 1"),
+              _buildCardIcon("assets/icon2.png", "Name 2"),
+              _buildCardIcon("assets/icon3.png", "Name 3"),
+              // Add more card icons as needed
+            ],
+          ),
+        )
 
         // Add other content below the carousel_slider
       ],
     );
+
   }
+  static Widget _buildCardIcon(String iconAsset, String name) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(iconAsset, width: 40),
+          SizedBox(height: 10),
+          Text(name, textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
+  Future<void> fetchData() async {
+    List<MenuData> menudata=[];
+
+    String apiUrl =
+       'http://connect.hicare.in/mobileapi/api/Dashboard/GetDashboard?mobile=8976399055';
+    final response =
+    await http.get(Uri.parse(apiUrl)); // Replace with your API endpoint
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> jsonData = json.decode(response.body);
+      List<dynamic> menudata = jsonData['Data'];
+
+      setState(() {
+        // menudata = menudata.map((json) => MenuData.fromJson(json)).toList();
+        Utils.showsnackbar('menudata:'+menudata.toString(), context);
+      });
+    } else {
+      Utils.toastMessage(
+          'Failed to load data. Status code: ${response.statusCode}');
+    }
+  }
+
+
 }

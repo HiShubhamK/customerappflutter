@@ -362,5 +362,4 @@ class _ProductScreen extends State<ProductScreen> {
   }
 
 
-
 }

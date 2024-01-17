@@ -73,6 +73,7 @@ camera: ^0.10.5+4
 image_picker: ^1.0.4
 
 
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -87,4 +88,5 @@ flutter:
     - images/whatsapp.png
     - images/twitter.png
     - images/instagram.png
+    - images/ic_camera.png
     - assets/animoffers.json
