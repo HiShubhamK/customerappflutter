@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:customerappdart/model/productlistresponse.dart';
+import 'package:customerappdart/view/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart' as http;
@@ -64,6 +65,7 @@ class _ProductScreen extends State<ProductScreen> {
                     color: Color.fromARGB(255, 43, 183, 122)),
                 // Add your cart icon here
                 onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
                   // Implement cart functionality
                 },
               ),
@@ -71,7 +73,15 @@ class _ProductScreen extends State<ProductScreen> {
               IconButton(
                 icon: Icon(Icons.shopping_cart,
                     color: Color.fromARGB(255, 43, 183, 122)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartScreen(),
+                      // builder: (context) => ScreenSupport(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:customerappdart/view/bookslotscreen.dart';
+import 'package:customerappdart/view/cart_screen.dart';
 import 'package:customerappdart/view/myorders.dart';
 import 'package:customerappdart/view/product_screen.dart';
 import 'package:customerappdart/view/productdetailscreen.dart';
@@ -73,10 +74,19 @@ class _DashboardScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
           if (index == 2) {
-            Map<String, String> data = {
-              'pincode':'400079' ,
-            };
-            authViewModel.productlistbypincode(data,context);
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                 builder: (context) => ProductScreen(),
+                //   builder: (context) => CartScreen(),
+                // builder: (context) => ScreenSupport(),
+              ),
+            );
+            // Map<String, String> data = {
+            //   'pincode':'400079' ,
+            // };
+            // authViewModel.productlistbypincode(data,context);
           }
           if(index==1){
 
@@ -91,7 +101,8 @@ class _DashboardScreenState extends State<HomeScreen> {
           // builder: (context) => ScreenSupport(),
           ),
           );
-          } if(index==3){
+          }
+          if(index==3){
 
           Navigator.push(
           context,

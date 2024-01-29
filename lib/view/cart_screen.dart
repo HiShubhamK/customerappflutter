@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:customerappdart/model/Product.dart';
+import 'package:customerappdart/view/address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart' as http;
@@ -85,7 +86,9 @@ class _CartScreen extends State<CartScreen> {
             Container(
               width: 180,
               color: Color.fromARGB(255, 43, 183, 122),
-              child: TextButton(onPressed: () {},
+              child: TextButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
+              },
                   child: Text('Place Order',style: TextStyle(color: Colors.white),)),
             )
             // IconButton(
@@ -126,15 +129,15 @@ class _CartScreen extends State<CartScreen> {
                     SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Price'), Text(totalAmount.toString())],
+                      children: [Text('Price'), Text('\u{20B9}'+totalAmount.toString())],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Discount'), Text(totalDiscount.toString())],
+                      children: [Text('Discount'), Text('-\u{20B9}'+totalDiscount.toString())],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('Delivery Charges'), Text(finalAmount.toString())],
+                      children: [Text('Delivery Charges'), Text('-\u{20B9}'+finalAmount.toString())],
                     ),
                     SizedBox(height: 8),
                     Divider(height: 2, color: Colors.black),
@@ -146,7 +149,7 @@ class _CartScreen extends State<CartScreen> {
                           'Total Amount',
                           style: TextStyle(color: Colors.red),
                         ),
-                        Text(finalAmount.toString(), style: TextStyle(color: Colors.red))
+                        Text('\u{20B9}'+finalAmount.toString(), style: TextStyle(color: Colors.red))
                       ],
                     ),
                   ],
