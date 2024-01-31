@@ -20,7 +20,9 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../view/Screen_OTP.dart';
+import '../view/Store.dart';
 import '../view/myorders.dart';
+
 
 class AuthViewModel with ChangeNotifier {
   final myRepo = AuthRepository();
@@ -194,13 +196,18 @@ class AuthViewModel with ChangeNotifier {
         // Utils.showsnackbar(value.toString(), context);
 
         if(value.isSuccess==true){
-          Utils.showsnackbar(value.responseMessage.toString(), context);
+          Utils.showsnackbar(Utils.TOKEN.toString(), context);
           Utils.TOKEN=value.data!.token.toString();
           Utils.saveToken(Utils.TOKEN);
           Utils.customerid=value.data!.productCustomerData!.id as int;
           ValidateAccountViewModel validateAccountViewModel=new ValidateAccountViewModel();
           validateAccountViewModel.saveToken(value);
           print("Response data: ${Utils.TOKEN}");
+          Store.clear();
+          Store.setToken(value.data!.token.toString());
+          final preferences = await SharedPreferences.getInstance();
+          var taketoken=preferences.getString("TOKEN");
+          print('Response Data token: $taketoken');
 
 
 
