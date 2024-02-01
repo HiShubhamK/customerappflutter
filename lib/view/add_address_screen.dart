@@ -51,9 +51,9 @@ class AddAddressScreen extends StatelessWidget{
               // After selecting the desired option,it will
               // change button value to selected value
               onChanged: (String? newValue) {
-                setState(() {
-                  dropdownvalue = newValue!;
-                });
+                // setState(() {
+                //   dropdownvalue = newValue!;
+                // });
               },
             ),
           ],
