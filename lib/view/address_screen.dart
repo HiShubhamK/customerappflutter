@@ -1,3 +1,4 @@
+import 'package:customerappdart/view/add_address_screen.dart';
 import 'package:flutter/material.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -85,13 +86,19 @@ class _AddressScreen extends State<AddressScreen> {
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          'Change Address',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 43, 183, 55),
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        )
+                        GestureDetector(
+                          onTap: () {
+                            print('Text PRINTED');
+                            Navigator.push(context, MaterialPageRoute(builder: (contex) => AddAddressScreen()));
+                          },
+                          child:   Text(
+                            'Change Address',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 43, 183, 55),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ),
                       ],
                     ),
                     SizedBox(
