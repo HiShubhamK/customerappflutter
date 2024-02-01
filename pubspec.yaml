@@ -73,6 +73,7 @@ built_value_generator: ^7.1.0
 camera: ^0.10.5+4
 image_picker: ^1.0.4
 hive: ^2.2.3
+flutter_html: ^0.8.2
 
 
 
