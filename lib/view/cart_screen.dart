@@ -105,11 +105,24 @@ class _CartScreen extends State<CartScreen> {
         margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
         child: Column(
           children: [
-            Center(
-                child: Text('Deliver to Pinode 400080',
-                    style: TextStyle(
-                        backgroundColor: Color.fromARGB(255, 43, 183, 55),
-                        color: Colors.white))),
+            Container(
+              alignment: Alignment.center,
+              width: double.infinity, // Set width to match the parent
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 43, 183, 122),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Deliver to Pinode 400080',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+            ),
             Card(
               elevation: 5,
               child: Container(
