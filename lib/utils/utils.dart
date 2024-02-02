@@ -2,7 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
 import 'package:customerappdart/model/dashboardmodell.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer';
@@ -42,16 +42,16 @@ class Utils {
     modelList!.clear();
   }
 
-  static toastMessage(String messsage) {
-    Fluttertoast.showToast(
-        msg: messsage,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
+  // static toastMessage(String messsage) {
+  //   Fluttertoast.showToast(
+  //       msg: messsage,
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       timeInSecForIosWeb: 1,
+  //       backgroundColor: Colors.green,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0);
+  // }
 
   static void flushbarErrorMessage(String messsage, BuildContext context) {
     showFlushbar(

@@ -236,7 +236,7 @@ class OTPScreen extends StatelessWidget {
                           Map<String, dynamic> data = {
                             'mobileNo': Utils.mobile.toString(),
                           };
-                          Utils.toastMessage('Login successfully!');
+                          // Utils.toastMessage('Login successfully!');
 
                           authViewModel.validateAccount(data, context);
                           // authViewModel.Dashboard(data, context);

@@ -70,8 +70,7 @@ class AddAddressScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-          child: SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: Column(
@@ -165,16 +164,23 @@ class AddAddressScreen extends StatelessWidget {
                           errormessage: "Enter name",
                         ),
                         SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Mobile no",
-                          textEditingController: mobilenumber,
-                          errormessage: "Enter mobile number",
-                        ),
-                        SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Email",
-                          textEditingController: email,
-                          errormessage: "Enter email adddress",
+
+                        Row(
+                          children: [
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Mobile no",
+                              textEditingController: mobilenumber,
+                              errormessage: "Enter mobile number",
+                            ),),
+                            SizedBox(width: 10),
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Email",
+                              textEditingController: email,
+                              errormessage: "Enter email adddress",
+                            ),)
+                          ],
                         ),
                         SizedBox(height: 10),
                         Container(
@@ -208,7 +214,19 @@ class AddAddressScreen extends StatelessWidget {
                         SizedBox(height: 10),
                         Row(
                           children: [
-
+                            Expanded(
+                              child: EditTextInputField(
+                              hintTextToDisplay: "Street",
+                              textEditingController: street,
+                              errormessage: "Enter street",
+                            ),),
+                            SizedBox(width: 10),
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Locality",
+                              textEditingController: locality,
+                              errormessage: "Enter locality",
+                            ),),
                           ],
                         ),
                         // EditTextInputField(
@@ -223,48 +241,71 @@ class AddAddressScreen extends StatelessWidget {
                         //   errormessage: "Enter building",
                         // ),
                         SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Street",
-                          textEditingController: street,
-                          errormessage: "Enter street",
+
+
+                        Row(
+                          children: [
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Street",
+                              textEditingController: street,
+                              errormessage: "Enter street",
+                            ),),
+                            SizedBox(width: 10),
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Locality",
+                              textEditingController: locality,
+                              errormessage: "Enter locality",
+                            ),
+                            )
+                          ],
                         ),
                         SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Locality",
-                          textEditingController: locality,
-                          errormessage: "Enter locality",
+                        Row(
+                          children: [
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Landmark",
+                              textEditingController: landmark,
+                              errormessage: "Enter landmmark",
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "City",
+                              textEditingController: city,
+                              errormessage: "Enter city",
+                            ),),
+                          ],
                         ),
                         SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Landmark",
-                          textEditingController: landmark,
-                          errormessage: "Enter landmmark",
+                        Row(
+                          children: [
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "State",
+                              textEditingController: state,
+                              errormessage: "Enter State",
+                            ),),
+                            SizedBox(width: 10),
+                            Expanded(child:
+                            EditTextInputField(
+                              hintTextToDisplay: "Pincode",
+                              textEditingController: pincode,
+                              errormessage: "Enter pincode",
+                            ),),
+                          ],
                         ),
-                        SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "City",
-                          textEditingController: city,
-                          errormessage: "Enter city",
-                        ),
-                        SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "State",
-                          textEditingController: state,
-                          errormessage: "Enter State",
-                        ),
-                        SizedBox(height: 10),
-                        EditTextInputField(
-                          hintTextToDisplay: "Pincode",
-                          textEditingController: pincode,
-                          errormessage: "Enter pincode",
-                        ),
+
                       ],
                     ),
                   )),
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }

@@ -98,7 +98,8 @@ class _DashboardScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ServicesScreen(),
+                builder:(context) => ProductScreen()
+                // builder: (context) => ServicesScreen(),
                 //   builder: (context) => CartScreen(),
                 // builder: (context) => ScreenSupport(),
               ),
@@ -489,7 +490,7 @@ class _DashboardScreenState extends State<HomeScreen> {
         menudata = data.map((json) => MenuData.fromJson(json)).toList();
         // _buildCarouselSlider(bannerList);
       });
-      Utils.toastMessage(menudata.toString());
+      // Utils.toastMessage(menudata.toString());
 
 
       // dashboardModel=DashboardModel();

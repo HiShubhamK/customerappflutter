@@ -239,7 +239,7 @@ class AuthViewModel with ChangeNotifier {
         // Utils.showsnackbar(value.toString(), context);
 
         if(value.isSuccess==true){
-          Utils.toastMessage('Dashboard api'+value.responseMessage.toString());
+          // Utils.toastMessage('Dashboard api'+value.responseMessage.toString());
 
           // Utils.TOKEN=value.data!.token.toString();
           // Navigator.push(
